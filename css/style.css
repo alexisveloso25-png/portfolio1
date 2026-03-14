@@ -74,55 +74,58 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 /* ══════════════════════════════════════════════════════════
    HERO
 ══════════════════════════════════════════════════════════ */
+
+/* ══ HERO ══════════════════════════════════════════════════ */
 .hero {
-  height: 100svh;
-  min-height: 560px;
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  height: 100svh;
+  min-height: 560px;
   overflow: hidden;
-  position: relative;
-  padding-top: 64px;
 }
 
-/* ── Colonne gauche ────────────────────────────────────── */
+/* ── Gauche ─────────────────────────────────────────────── */
 .hero-left {
   order: 1;
   background: var(--cream);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 64px 56px 40px 8%;
+  display: grid;
+  align-content: center;      /* centre verticalement dans le grid */
+  padding: 80px 56px 40px 8%;
   gap: 18px;
+  position: relative;
   z-index: 2;
 }
 
-/* Trait vertical */
+/* Trait droit */
 .hero-left::after {
   content: '';
   position: absolute; top: 15%; right: 0; bottom: 15%;
   width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--border2) 35%, var(--border2) 65%, transparent);
+  background: linear-gradient(to bottom,
+    transparent 0%, var(--border2) 30%,
+    var(--border2) 70%, transparent 100%);
 }
 
-/* E déco discret */
+/* E déco */
 .hero-deco-num {
   position: absolute;
-  bottom: 24px; right: 52px;
+  bottom: 28px; right: 48px;
   font-family: var(--serif);
   font-size: 7rem; font-weight: 300; font-style: italic;
-  color: rgba(196,168,130,.07);
+  color: rgba(196,168,130,.06);
   user-select: none; pointer-events: none; line-height: 1;
 }
 
 /* Eyebrow */
 .hero-pretitle {
   display: flex; align-items: center; gap: 10px;
-  font-size: .6rem; font-weight: 600; letter-spacing: 2.5px;
-  text-transform: uppercase; color: var(--sand2);
+  font-size: .58rem; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--sand2);
 }
 .hero-pretitle::before {
-  content: ''; width: 20px; height: 1px; background: var(--sand2); flex-shrink: 0;
+  content: ''; width: 20px; height: 1px;
+  background: var(--sand2); flex-shrink: 0;
 }
 
 /* Nom */
@@ -130,16 +133,17 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   font-family: var(--serif);
   font-size: clamp(3rem, 5.2vw, 5.5rem);
   font-weight: 300; line-height: .9;
-  letter-spacing: -.5px; color: var(--ink);
-  margin: 0;
+  letter-spacing: -.5px; color: var(--ink); margin: 0;
 }
-.hero-name em { font-style: italic; color: var(--sand2); display: block; margin-top: 6px; }
+.hero-name em {
+  font-style: italic; color: var(--sand2);
+  display: block; margin-top: 6px;
+}
 
 /* Séparateur */
 .hero-sep {
   width: 32px; height: 1.5px;
   background: linear-gradient(to right, var(--sand2), transparent);
-  flex-shrink: 0;
 }
 
 /* Description */
@@ -149,19 +153,19 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   color: var(--ink3); line-height: 1.7; max-width: 340px;
 }
 
-/* ── Boutons modernes ───────────────────────────────────── */
+/* Boutons */
 .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
 
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--sans); font-size: .72rem; font-weight: 600;
   letter-spacing: .8px; border-radius: var(--r);
-  transition: all .25s var(--ease); cursor: pointer; border: none;
-  text-decoration: none;
+  transition: all .25s var(--ease);
+  cursor: pointer; border: none; text-decoration: none;
+  padding: 12px 24px;
 }
 .btn-dark {
   background: var(--ink); color: var(--white);
-  padding: 12px 24px;
   position: relative; overflow: hidden;
 }
 .btn-dark::before {
@@ -171,47 +175,34 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   transform: translateX(-101%);
   transition: transform .35s var(--ease);
 }
-.btn-dark:hover::before { transform: translateX(0); }
-.btn-dark span, .btn-dark i { position: relative; z-index: 1; }
-.btn-dark:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,22,18,.2); }
-
+.btn-dark:hover::before  { transform: translateX(0); }
+.btn-dark:hover          { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,22,18,.2); }
+.btn-dark span,.btn-dark i { position: relative; z-index: 1; }
 .btn-outline {
   background: transparent; color: var(--ink2);
-  padding: 11px 22px;
   border: 1.5px solid var(--border2);
 }
 .btn-outline:hover {
   border-color: var(--sand2); color: var(--sand2);
-  transform: translateY(-2px);
-  background: var(--sand-bg);
+  transform: translateY(-2px); background: var(--sand-bg);
 }
 
-/* ── KPIs ───────────────────────────────────────────────── */
+/* KPIs */
 .hero-kpis {
-  display: flex;
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  overflow: hidden;
-  background: rgba(255,255,255,.7);
-  align-self: flex-start;
-  backdrop-filter: blur(6px);
+  display: flex; align-self: flex-start;
+  border: 1px solid var(--border); border-radius: var(--r);
+  overflow: hidden; background: rgba(255,255,255,.7);
 }
 .kpi { padding: 11px 20px; border-right: 1px solid var(--border); }
 .kpi:last-child { border-right: none; }
-.kpi-n {
-  font-family: var(--serif);
-  font-size: 1.2rem; font-weight: 500; color: var(--ink); line-height: 1;
-}
-.kpi-l {
-  font-size: .5rem; font-weight: 600; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--ink4); margin-top: 3px;
-}
+.kpi-n { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; color: var(--ink); line-height: 1; }
+.kpi-l { font-size: .5rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink4); margin-top: 3px; }
 
-/* ── Scroll indicator ───────────────────────────────────── */
+/* Scroll hint */
 .hero-scroll {
   display: flex; align-items: center; gap: 9px;
-  font-size: .54rem; font-weight: 600; letter-spacing: 2.5px;
-  text-transform: uppercase; color: var(--ink4);
+  font-size: .54rem; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink4);
 }
 .hero-scroll-bar {
   width: 28px; height: 1px;
@@ -224,10 +215,11 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 }
 @keyframes scrollAnim { to { left: 100% } }
 
-/* ── Colonne droite : photo ─────────────────────────────── */
+/* ── Droite : photo ─────────────────────────────────────── */
 .hero-right {
   order: 2;
-  background: radial-gradient(ellipse at 50% 68%, var(--cream3) 0%, var(--cream2) 50%, var(--cream) 100%);
+  background: radial-gradient(ellipse at 50% 70%,
+    var(--cream3) 0%, var(--cream2) 50%, var(--cream) 100%);
   display: flex; align-items: flex-end; justify-content: center;
   position: relative; overflow: hidden;
 }
@@ -236,15 +228,17 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   position: absolute; bottom: -10%; left: 50%;
   transform: translateX(-50%);
   width: 68%; padding-bottom: 68%; border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(196,168,130,.16) 0%, transparent 70%);
+  background: radial-gradient(ellipse,
+    rgba(196,168,130,.16) 0%, transparent 70%);
 }
 .hero-right::after {
   content: '';
   position: absolute; bottom: 0; left: 12%; right: 12%; height: 1px;
-  background: linear-gradient(to right, transparent, var(--sand-bdr), transparent);
+  background: linear-gradient(to right,
+    transparent, var(--sand-bdr), transparent);
 }
 .hero-photo {
-  width: auto; max-width: 80%; height: 91%;
+  width: auto; max-width: 80%; height: 88%;
   object-fit: contain; object-position: bottom center;
   position: relative; z-index: 2;
   filter: drop-shadow(0 10px 24px rgba(100,70,40,.1));
@@ -256,10 +250,11 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   position: absolute; bottom: 20px; right: 20px;
   background: var(--ink); color: rgba(255,255,255,.8);
   font-size: .48rem; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; padding: 6px 11px; border-radius: 2px; z-index: 5;
+  text-transform: uppercase; padding: 6px 11px;
+  border-radius: 2px; z-index: 5;
 }
 .hero-tag {
-  position: absolute; top: 76px; left: 16px;
+  position: absolute; top: 80px; left: 16px;
   display: flex; align-items: center; gap: 7px;
   background: rgba(255,255,255,.92); backdrop-filter: blur(8px);
   border: 1px solid var(--border); border-radius: 99px;
@@ -269,9 +264,9 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 .hero-tag-dot {
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--sand2); flex-shrink: 0;
-  animation: pulse 2s ease infinite;
+  animation: tagPulse 2s ease infinite;
 }
-@keyframes pulse {
+@keyframes tagPulse {
   0%,100% { box-shadow: 0 0 0 0 rgba(184,149,110,.5) }
   50%      { box-shadow: 0 0 0 5px rgba(184,149,110,0) }
 }
@@ -280,18 +275,25 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 
 /* ── Responsive ─────────────────────────────────────────── */
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; grid-template-rows: 320px auto; height: auto; min-height: auto; }
-  .hero-right { order: 1; height: 320px; }
-  .hero-left  { order: 2; height: auto; padding: 36px 24px 44px; }
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px auto;
+    height: auto; min-height: auto;
+  }
+  .hero-right { order: 1; height: 300px; }
+  .hero-left  {
+    order: 2; padding: 40px 24px 48px;
+    align-content: start;
+  }
   .hero-left::after { display: none; }
-  .hero-deco-num { display: none; }
+  .hero-deco-num    { display: none; }
   .hero-photo { max-width: 55%; height: 95%; }
-  .hero-tag   { top: 72px; }
+  .hero-tag   { top: 12px; }
 }
 @media (max-width: 520px) {
   .hero-name  { font-size: 2.6rem; }
-  .hero-right { height: 260px; }
-  .hero-photo { max-width: 70%; }
+  .hero-right { height: 240px; }
+  .hero-photo { max-width: 68%; }
 }
 
 /* ══ SCROLL REVEAL ══════════════════════════════════════════
