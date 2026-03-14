@@ -284,13 +284,38 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 .link-more:hover { color:var(--sand2); border-color:var(--sand2); gap:11px }
 
 /* ── REVEAL ──── */
-/* Reveal — visible par défaut, animation au scroll si JS disponible */
-[data-r] { opacity:1; transform:none }
-[data-r].will-animate { opacity:0; transform:translateY(20px); transition:opacity .7s var(--ease), transform .7s var(--ease) }
-[data-r="right"].will-animate { transform:translateX(20px) }
-[data-r="left"].will-animate  { transform:translateX(-20px) }
-[data-r="scale"].will-animate { transform:scale(.97); opacity:0 }
-[data-r].will-animate.in { opacity:1; transform:none }
+/* ══ SCROLL REVEAL ══════════════════════════════════════════
+   Visible par défaut → JS ajoute .will-animate avant observer
+   → .in déclenche l'animation au scroll
+═══════════════════════════════════════════════════════════ */
+[data-r]               { opacity: 1; transform: none }
+
+/* Cachés par JS avant observation */
+[data-r].will-animate                   { opacity: 0; transform: translateY(32px);         transition: opacity .85s var(--ease), transform .85s var(--ease) }
+[data-r="right"].will-animate           { opacity: 0; transform: translateX(40px);          transition: opacity .85s var(--ease), transform .85s var(--ease) }
+[data-r="left"].will-animate            { opacity: 0; transform: translateX(-40px);         transition: opacity .85s var(--ease), transform .85s var(--ease) }
+[data-r="scale"].will-animate           { opacity: 0; transform: scale(.93) translateY(20px); transition: opacity .9s var(--ease), transform .9s var(--ease) }
+[data-r="fade"].will-animate            { opacity: 0; transform: none;                       transition: opacity 1s var(--ease) }
+[data-r="clip"].will-animate            { opacity: 0; clip-path: inset(0 0 100% 0);          transition: opacity .8s var(--ease), clip-path .8s var(--ease) }
+
+/* Révélés */
+[data-r].will-animate.in               { opacity: 1; transform: none }
+[data-r="clip"].will-animate.in        { opacity: 1; clip-path: inset(0 0 0% 0) }
+
+/* Staggered children */
+[data-stagger] > * {
+  opacity: 1; transform: none;
+}
+[data-stagger].will-animate > * {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .65s var(--ease), transform .65s var(--ease);
+}
+[data-stagger].will-animate.in > *:nth-child(1)  { opacity:1; transform:none; transition-delay: .05s }
+[data-stagger].will-animate.in > *:nth-child(2)  { opacity:1; transform:none; transition-delay: .15s }
+[data-stagger].will-animate.in > *:nth-child(3)  { opacity:1; transform:none; transition-delay: .25s }
+[data-stagger].will-animate.in > *:nth-child(4)  { opacity:1; transform:none; transition-delay: .35s }
+[data-stagger].will-animate.in > *:nth-child(5)  { opacity:1; transform:none; transition-delay: .45s }
+[data-stagger].will-animate.in > *:nth-child(6)  { opacity:1; transform:none; transition-delay: .55s }
 
 /* ── HERO ENTRY ANIMS ── */
 [data-a] { opacity:0 }
