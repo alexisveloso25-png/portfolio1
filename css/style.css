@@ -202,13 +202,13 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   grid-template-columns:1fr 1fr;
   height:100svh; min-height:560px;
   overflow:hidden;
-  padding-top:64px;
 }
 
 .hero-left {
   order:1; background:var(--cream);
-  display:grid; align-content:center;
-  padding:40px 56px 40px 8%;
+  display:flex; flex-direction:column;
+  justify-content:center;
+  padding:80px 56px 40px 8%;
   gap:18px; position:relative; z-index:2;
 }
 .hero-left::after {
@@ -250,6 +250,30 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 .hero-scroll { display:flex; align-items:center; gap:9px; font-size:.54rem; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--ink4) }
 .hero-scroll-bar { width:28px; height:1px; background:var(--border2); position:relative; overflow:hidden }
 .hero-scroll-bar::after { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:var(--sand); animation:scrollAnim 2s var(--ease) infinite }
+
+/* ── Rôle rotatif ───────────────────────────────────────── */
+.hero-role-wrap {
+  display:flex; align-items:center; gap:6px;
+  font-family:var(--serif); font-size:1rem; font-style:italic;
+  color:var(--ink3); overflow:hidden; height:1.4em;
+}
+.hero-role-label { flex-shrink:0; color:var(--ink3) }
+.hero-role-slider {
+  display:flex; flex-direction:column;
+  animation:roleSlide 9s ease-in-out infinite;
+  color:var(--sand2); font-weight:500;
+}
+.hero-role-item { height:1.4em; line-height:1.4em; white-space:nowrap }
+@keyframes roleSlide {
+  0%         { transform:translateY(0) }
+  20%        { transform:translateY(0) }
+  33%        { transform:translateY(-1.4em) }
+  53%        { transform:translateY(-1.4em) }
+  66%        { transform:translateY(-2.8em) }
+  86%        { transform:translateY(-2.8em) }
+  100%       { transform:translateY(-4.2em) }
+}
+
 @keyframes scrollAnim { to { left:100% } }
 
 .hero-right {
@@ -257,6 +281,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   background:radial-gradient(ellipse at 50% 70%, var(--cream3) 0%, var(--cream2) 50%, var(--cream) 100%);
   display:flex; align-items:flex-end; justify-content:center;
   position:relative; overflow:hidden;
+  padding-top:64px;
 }
 .hero-right::before {
   content:''; position:absolute; bottom:-10%; left:50%; transform:translateX(-50%);
