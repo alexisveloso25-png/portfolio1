@@ -69,27 +69,26 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
    HERO — 2 colonnes clean
 ══════════════════════════════════════════════════════════ */
 .hero {
-  height:100svh;
-  min-height:600px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:stretch;
-  padding-top:64px;
-  overflow:hidden;
+  height: 100svh;
+  min-height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  overflow: hidden;
+  /* padding-top géré dans hero-left pour éviter de décaler le centre */
 }
 
 /* Colonne gauche — fond crème, texte centré verticalement */
 .hero-left {
-  background:var(--cream);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:flex-start;
-  padding:80px 56px 80px 8%;
-  gap:26px;
-  position:relative;
-  z-index:2;
-  height:100%;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: calc(64px + 60px) 56px 60px 8%;
+  gap: 26px;
+  position: relative;
+  z-index: 2;
 }
 
 /* Trait vertical séparateur */
@@ -168,6 +167,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   background:radial-gradient(ellipse at 50% 80%, var(--cream3) 0%, var(--cream2) 55%, var(--cream) 100%);
   display:flex; align-items:flex-end; justify-content:center;
   position:relative; overflow:hidden;
+  padding-top:64px; /* nav height */
 }
 
 /* Halo doux derrière Elisa */
