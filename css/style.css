@@ -196,106 +196,230 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 /* ════════════════════════════════════════════════
    HERO
 ════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════════ */
+.hero-wrapper {
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+}
 .hero {
-  position:relative;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  height:100svh; min-height:560px;
-  overflow:hidden;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
 }
 
+/* ── Gauche ─────────────────────────────────── */
 .hero-left {
-  order:1; background:var(--cream);
-  display:flex; flex-direction:column;
-  justify-content:center;
-  padding:80px 56px 40px 8%;
-  gap:18px; position:relative; z-index:2;
+  order: 1;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* top pad = nav height, bottom pad = 0 → centre visuel */
+  padding: 64px 60px 0 8%;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
 }
 .hero-left::after {
-  content:''; position:absolute; top:15%; right:0; bottom:15%;
-  width:1px;
-  background:linear-gradient(to bottom, transparent, var(--border2) 35%, var(--border2) 65%, transparent);
+  content: '';
+  position: absolute; top: 15%; right: 0; bottom: 15%;
+  width: 1px;
+  background: linear-gradient(to bottom,
+    transparent, var(--border2) 30%,
+    var(--border2) 70%, transparent);
 }
 .hero-deco-num {
-  position:absolute; bottom:28px; right:48px;
-  font-family:var(--serif); font-size:7rem; font-weight:300; font-style:italic;
-  color:rgba(196,168,130,.06); user-select:none; pointer-events:none; line-height:1;
+  position: absolute;
+  bottom: 40px; right: 52px;
+  font-family: var(--serif);
+  font-size: 8rem; font-weight: 300; font-style: italic;
+  color: rgba(196,168,130,.05);
+  user-select: none; pointer-events: none; line-height: 1;
 }
+
+/* Eyebrow */
 .hero-pretitle {
-  display:flex; align-items:center; gap:10px;
-  font-size:.58rem; font-weight:600; letter-spacing:2.5px;
-  text-transform:uppercase; color:var(--sand2);
+  display: flex; align-items: center; gap: 10px;
+  font-size: .58rem; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--sand2);
 }
-.hero-pretitle::before { content:''; width:20px; height:1px; background:var(--sand2); flex-shrink:0 }
+.hero-pretitle::before {
+  content: ''; width: 20px; height: 1px;
+  background: var(--sand2); flex-shrink: 0;
+}
+
+/* Nom */
 .hero-name {
-  font-family:var(--serif); font-size:clamp(3rem,5.2vw,5.5rem);
-  font-weight:300; line-height:.9; letter-spacing:-.5px; color:var(--ink); margin:0;
+  font-family: var(--serif);
+  font-size: clamp(3.2rem, 5.5vw, 6rem);
+  font-weight: 300; line-height: .88;
+  letter-spacing: -.5px; color: var(--ink); margin: 0;
 }
-.hero-name em { font-style:italic; color:var(--sand2); display:block; margin-top:6px }
-.hero-sep { width:32px; height:1.5px; background:linear-gradient(to right, var(--sand2), transparent) }
-.hero-desc {
-  font-family:var(--serif); font-size:.95rem; font-style:italic;
-  color:var(--ink3); line-height:1.7; max-width:340px;
+.hero-name em {
+  font-style: italic; color: var(--sand2);
+  display: block; margin-top: 8px;
 }
-.hero-btns { display:flex; gap:10px; flex-wrap:wrap }
-.hero-kpis {
-  display:flex; align-self:flex-start;
-  border:1px solid var(--border); border-radius:var(--r);
-  overflow:hidden; background:rgba(255,255,255,.7);
-}
-.kpi { padding:11px 20px; border-right:1px solid var(--border) }
-.kpi:last-child { border-right:none }
-.kpi-n { font-family:var(--serif); font-size:1.2rem; font-weight:500; color:var(--ink); line-height:1 }
-.kpi-l { font-size:.5rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink4); margin-top:3px }
-.hero-scroll { display:flex; align-items:center; gap:9px; font-size:.54rem; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--ink4) }
-.hero-scroll-bar { width:28px; height:1px; background:var(--border2); position:relative; overflow:hidden }
-.hero-scroll-bar::after { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:var(--sand); animation:scrollAnim 2s var(--ease) infinite }
 
-/* ── Rôle rotatif ───────────────────────────────────────── */
+/* Rôle rotatif */
 .hero-role-wrap {
-  display:flex; align-items:center; gap:6px;
-  font-family:var(--serif); font-size:1rem; font-style:italic;
-  color:var(--ink3); overflow:hidden; height:1.4em;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--serif); font-size: 1.1rem;
+  color: var(--ink3); overflow: hidden;
+  height: 1.5em; line-height: 1.5em;
 }
-.hero-role-label { flex-shrink:0; color:var(--ink3) }
+.hero-role-label { flex-shrink: 0; font-style: italic }
 .hero-role-slider {
-  display:flex; flex-direction:column;
-  animation:roleSlide 9s ease-in-out infinite;
-  color:var(--sand2); font-weight:500;
+  display: flex; flex-direction: column;
+  animation: roleSlide 9s ease-in-out infinite;
 }
-.hero-role-item { height:1.4em; line-height:1.4em; white-space:nowrap }
+.hero-role-item {
+  height: 1.5em; line-height: 1.5em;
+  white-space: nowrap;
+  font-style: italic; font-weight: 500; color: var(--sand2);
+}
 @keyframes roleSlide {
-  0%         { transform:translateY(0) }
-  20%        { transform:translateY(0) }
-  33%        { transform:translateY(-1.4em) }
-  53%        { transform:translateY(-1.4em) }
-  66%        { transform:translateY(-2.8em) }
-  86%        { transform:translateY(-2.8em) }
-  100%       { transform:translateY(-4.2em) }
+  0%,18%  { transform: translateY(0) }
+  25%,43% { transform: translateY(-1.5em) }
+  50%,68% { transform: translateY(-3em) }
+  75%,93% { transform: translateY(-4.5em) }
+  100%    { transform: translateY(-6em) }
 }
 
-@keyframes scrollAnim { to { left:100% } }
+/* Séparateur */
+.hero-sep {
+  width: 36px; height: 1.5px;
+  background: linear-gradient(to right, var(--sand2), transparent);
+}
 
+/* Description */
+.hero-desc {
+  font-family: var(--serif); font-size: .95rem;
+  font-style: italic; color: var(--ink3);
+  line-height: 1.75; max-width: 380px;
+}
+
+/* Boutons */
+.hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* KPIs */
+.hero-kpis {
+  display: flex; align-self: flex-start;
+  border: 1px solid var(--border); border-radius: var(--r);
+  overflow: hidden; background: rgba(255,255,255,.75);
+}
+.kpi { padding: 11px 22px; border-right: 1px solid var(--border); }
+.kpi:last-child { border-right: none; }
+.kpi-n {
+  font-family: var(--serif); font-size: 1.3rem;
+  font-weight: 500; color: var(--ink); line-height: 1;
+}
+.kpi-l {
+  font-size: .5rem; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--ink4); margin-top: 3px;
+}
+
+/* Scroll hint */
+.hero-scroll {
+  display: flex; align-items: center; gap: 9px;
+  font-size: .54rem; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink4);
+}
+.hero-scroll-bar {
+  width: 28px; height: 1px;
+  background: var(--border2); position: relative; overflow: hidden;
+}
+.hero-scroll-bar::after {
+  content: ''; position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: var(--sand);
+  animation: scrollAnim 2s var(--ease) infinite;
+}
+@keyframes scrollAnim { to { left: 100% } }
+
+/* ── Droite : photo ──────────────────────────── */
 .hero-right {
-  order:2;
-  background:radial-gradient(ellipse at 50% 70%, var(--cream3) 0%, var(--cream2) 50%, var(--cream) 100%);
-  display:flex; align-items:flex-end; justify-content:center;
-  position:relative; overflow:hidden;
-  padding-top:64px;
+  order: 2;
+  background: radial-gradient(ellipse at 50% 72%,
+    var(--cream3) 0%, var(--cream2) 50%, var(--cream) 100%);
+  display: flex; align-items: flex-end; justify-content: center;
+  position: relative; overflow: hidden;
 }
 .hero-right::before {
-  content:''; position:absolute; bottom:-10%; left:50%; transform:translateX(-50%);
-  width:68%; padding-bottom:68%; border-radius:50%;
-  background:radial-gradient(ellipse, rgba(196,168,130,.16) 0%, transparent 70%);
+  content: '';
+  position: absolute; bottom: -8%; left: 50%;
+  transform: translateX(-50%);
+  width: 68%; padding-bottom: 68%; border-radius: 50%;
+  background: radial-gradient(ellipse,
+    rgba(196,168,130,.18) 0%, transparent 70%);
 }
-.hero-right::after { content:''; position:absolute; bottom:0; left:12%; right:12%; height:1px; background:linear-gradient(to right, transparent, var(--sand-bdr), transparent) }
-.hero-photo { width:auto; max-width:80%; height:88%; object-fit:contain; object-position:bottom center; position:relative; z-index:2; filter:drop-shadow(0 10px 24px rgba(100,70,40,.1)); transition:transform .7s var(--ease) }
-.hero:hover .hero-photo { transform:translateY(-6px) scale(1.01) }
-.hero-badge { position:absolute; bottom:20px; right:20px; background:var(--ink); color:rgba(255,255,255,.8); font-size:.48rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 11px; border-radius:2px; z-index:5 }
-.hero-tag { position:absolute; top:16px; left:16px; display:flex; align-items:center; gap:7px; background:rgba(255,255,255,.92); backdrop-filter:blur(8px); border:1px solid var(--border); border-radius:99px; padding:5px 13px 5px 9px; font-size:.58rem; font-weight:600; color:var(--ink2); z-index:5 }
-.hero-tag-dot { width:6px; height:6px; border-radius:50%; background:var(--sand2); flex-shrink:0; animation:tagPulse 2s ease infinite }
-@keyframes tagPulse { 0%,100%{box-shadow:0 0 0 0 rgba(184,149,110,.5)} 50%{box-shadow:0 0 0 5px rgba(184,149,110,0)} }
-.hero-img-caption,.hero-ph-letter { display:none !important }
+.hero-right::after {
+  content: '';
+  position: absolute; bottom: 0; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(to right,
+    transparent, var(--sand-bdr), transparent);
+}
+.hero-photo {
+  width: auto; max-width: 82%; height: 90%;
+  object-fit: contain; object-position: bottom center;
+  position: relative; z-index: 2;
+  filter: drop-shadow(0 12px 28px rgba(100,70,40,.1));
+  transition: transform .7s var(--ease);
+}
+.hero-wrapper:hover .hero-photo { transform: translateY(-6px) scale(1.01); }
+
+/* Badge */
+.hero-badge {
+  position: absolute; bottom: 22px; right: 22px;
+  background: var(--ink); color: rgba(255,255,255,.82);
+  font-size: .48rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; padding: 6px 12px;
+  border-radius: 2px; z-index: 5;
+}
+
+/* Tag disponibilité — repositionné en bas à gauche de la photo */
+.hero-tag {
+  position: absolute; bottom: 22px; left: 22px;
+  display: flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,.95); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: 99px;
+  padding: 6px 14px 6px 10px;
+  font-size: .6rem; font-weight: 600; color: var(--ink2); z-index: 5;
+}
+.hero-tag-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--sand2); flex-shrink: 0;
+  animation: tagPulse 2s ease infinite;
+}
+@keyframes tagPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(184,149,110,.5) }
+  50%      { box-shadow: 0 0 0 5px rgba(184,149,110,0) }
+}
+.hero-img-caption,.hero-ph-letter { display: none !important; }
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 860px) {
+  .hero-wrapper { height: auto; }
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px auto;
+    height: auto;
+  }
+  .hero-right { order: 1; height: 300px; }
+  .hero-left  { order: 2; padding: 40px 24px 48px; justify-content: flex-start; }
+  .hero-left::after { display: none; }
+  .hero-deco-num { display: none; }
+  .hero-photo { max-width: 55%; height: 95%; }
+  .hero-tag { bottom: 12px; left: 12px; }
+}
+@media (max-width: 520px) {
+  .hero-name  { font-size: 2.6rem; }
+  .hero-photo { max-width: 70%; }
+}
+
 
 /* ════════════════════════════════════════════════
    ABOUT
