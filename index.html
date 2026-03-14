@@ -1,214 +1,336 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Elisa — Communication professionnelle, production audiovisuelle, écriture.">
-    <title>ELISA // PORTFOLIO</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elisa Moreau — Communication & Production</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Mode sombre/clair">
-    <i class="fas fa-moon"></i>
-</button>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Elisa <em>Moreau</em></a>
+    <ul class="nav-links">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="creation.html">Écriture</a></li>
+      <li><a href="devoirs.html">Travaux</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</nav>
 
-<header class="top-bar" id="top-bar">
-    <div class="brand">Elisa <span>Huart-Vasak</span></div>
-    <nav class="nav-links">
-        <a href="index.html" class="active">Accueil</a>
-        <a href="cv.html">CV & Expériences</a>
-        <a href="missions.html">Missions</a>
-        <a href="creation.html">Créations</a>
-        <a href="devoirs.html">Travaux</a>
-        <a href="contact.html">Contact</a>
+<!-- ══ HERO ══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-pretitle" data-a="0">
+      <span class="hero-pretitle-line"></span>
+      Communication · Production audiovisuelle
+    </div>
+    <h1 class="hero-title h1-display" data-a="1">
+      Elisa<em>Moreau</em>
+    </h1>
+    <p class="hero-sub" data-a="2">
+      Étudiante en BTS Communication — je conçois des projets qui donnent une voix aux idées, de la stratégie de marque aux courts-métrages.
+    </p>
+    <div class="hero-btns" data-a="3">
+      <a href="missions.html" class="btn btn-dark">Voir mes productions</a>
+      <a href="cv.html" class="btn btn-outline">
+        <i class="fa-regular fa-file-pdf"></i> Mon CV
+      </a>
+    </div>
+    <div class="hero-stats" data-a="3">
+      <div class="hero-stat">
+        <div class="stat-n">2</div>
+        <div class="stat-l">Productions</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-n">8+</div>
+        <div class="stat-l">Travaux remis</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-n">6</div>
+        <div class="stat-l">Poèmes écrits</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right" data-a="4">
+    <div class="hero-img-main">
+      <!-- Remplacez ce div par <img src="assets/photo.jpg" alt="Elisa Moreau"> -->
+      <div class="hero-ph-letter">E</div>
+    </div>
+    <div class="hero-img-caption">
+      <div>
+        <p class="caption">BTS Communication · Paris · 2025</p>
+      </div>
+      <div class="hero-scroll">
+        <span class="hero-scroll-line"></span>
+        Découvrir
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ABOUT ══════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-hd" data-r>
+      <div>
+        <p class="eyebrow">À propos</p>
+        <h2 class="h2">Une approche <em>humaine</em><br>de la communication</h2>
+      </div>
+    </div>
+    <div class="about-grid" data-r="scale">
+      <div class="about-photo">
+        <!-- Remplacez par <img src="assets/photo.jpg" alt="Elisa"> -->
+        <div class="about-ph">E</div>
+        <div class="about-photo-label">
+          <p class="caption">Elisa Moreau · Paris, France</p>
+        </div>
+      </div>
+      <div class="about-body">
+        <p class="about-quote">"La communication est un art — celui de dire juste, au bon moment, au bon public."</p>
+        <p class="about-text">Étudiante en BTS Communication, je me spécialise dans la production audiovisuelle et la gestion de contenus médias. Mon parcours mêle théorie académique, expériences pratiques en stage et engagement créatif à travers l'écriture.</p>
+        <p class="about-text">Curieuse et rigoureuse, je suis attirée par les projets où la narration compte autant que la stratégie.</p>
+        <div class="about-pills">
+          <span class="tag">Production audiovisuelle</span>
+          <span class="tag">Rédaction créative</span>
+          <span class="tag">Relations presse</span>
+          <span class="tag">Réseaux sociaux</span>
+          <span class="tag">Événementiel</span>
+        </div>
+        <div class="about-info-grid">
+          <div class="about-info-item"><p class="info-k">Formation</p><p class="info-v">BTS Communication</p></div>
+          <div class="about-info-item"><p class="info-k">Spécialité</p><p class="info-v">Production audiovisuelle</p></div>
+          <div class="about-info-item"><p class="info-k">Ville</p><p class="info-v">Paris, France</p></div>
+          <div class="about-info-item"><p class="info-k">Langues</p><p class="info-v">Français · Anglais</p></div>
+        </div>
+        <a href="cv.html" class="about-cta">
+          Voir le CV complet <i class="fa-solid fa-arrow-right" style="font-size:.7rem"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PRODUCTIONS ════════════════════════════ -->
+<section class="section section-cream" id="works">
+  <div class="container">
+    <div class="section-hd" data-r>
+      <div>
+        <p class="eyebrow">Productions</p>
+        <h2 class="h2">Deux œuvres,<br>deux <em>univers</em></h2>
+      </div>
+      <a href="missions.html" class="link-more">Toutes les missions <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="works-feat" data-r>
+      <div class="works-feat-img">
+        <div class="works-feat-initial">ES</div>
+        <span class="works-feat-badge">Court-métrage · 2025</span>
+        <div class="works-feat-overlay">
+          <a href="missions.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.4);color:#fff">
+            Voir le projet <i class="fa-solid fa-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="works-feat-body">
+        <div class="works-num">01</div>
+        <div>
+          <p class="works-sub">Court-métrage narratif</p>
+          <h3 class="works-title">Enfant Sauvage</h3>
+        </div>
+        <p class="works-desc">Court-métrage explorant l'identité et la résilience à l'adolescence. Coordination plateau, communication externe et dossier de presse.</p>
+        <div class="works-role">
+          <p class="works-role-k">Mon rôle</p>
+          <p class="works-role-v">Assistante à la production — coordination plateau, communication, dossier de presse, réseaux sociaux.</p>
+        </div>
+        <div class="works-tags">
+          <span class="tag">Production</span>
+          <span class="tag">Dossier de presse</span>
+          <span class="tag">Réseaux sociaux</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="works-feat" data-r style="flex-direction:row-reverse">
+      <div class="works-feat-img v2" style="order:2">
+        <div class="works-feat-initial">DFN</div>
+        <span class="works-feat-badge">Audiovisuel · 2025</span>
+        <div class="works-feat-overlay">
+          <a href="missions.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.4);color:#fff">
+            Voir le projet <i class="fa-solid fa-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="works-feat-body" style="order:1">
+        <div class="works-num">02</div>
+        <div>
+          <p class="works-sub">Projet audiovisuel</p>
+          <h3 class="works-title">Day for Night</h3>
+        </div>
+        <p class="works-desc">Projet nocturne jouant sur les ambiances urbaines et la lumière artificielle. Stratégie digitale, synopsis et coordination presse.</p>
+        <div class="works-role">
+          <p class="works-role-k">Mon rôle</p>
+          <p class="works-role-v">Chargée de communication — stratégie réseaux, contenus promotionnels, coordination presse, pitchs et synopsis.</p>
+        </div>
+        <div class="works-tags">
+          <span class="tag">Communication</span>
+          <span class="tag">Stratégie digitale</span>
+          <span class="tag">Rédaction</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ POÈMES ══════════════════════════════════ -->
+<section class="section" id="poems">
+  <div class="container">
+    <div class="section-hd" data-r>
+      <div>
+        <p class="eyebrow">Écriture créative</p>
+        <h2 class="h2">Quelques <em>mots</em></h2>
+      </div>
+      <a href="creation.html" class="link-more">Tous les textes <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="poems-grid">
+      <div class="poem-card sand-bg" data-r>
+        <div class="poem-q">"</div>
+        <p class="poem-body">Je cherche le mot qui tombe juste,<br>celui qui n'abîme pas le silence<br>mais lui donne une forme—<br>comme on pose une main<br>sur une épaule inconnue.</p>
+        <div class="poem-footer">
+          <span class="poem-ft-title">Silence entre les lignes</span>
+          <span class="poem-ft-year">2024</span>
+        </div>
+      </div>
+      <div class="poem-card cream-bg" data-r>
+        <div class="poem-q">"</div>
+        <p class="poem-body">Il y a des matins en janvier<br>où la lumière hésite avant d'entrer,<br>comme si elle savait<br>qu'elle ne restera pas.<br><br>On fait pareil, parfois.</p>
+        <div class="poem-footer">
+          <span class="poem-ft-title">Lumière d'hiver</span>
+          <span class="poem-ft-year">2024</span>
+        </div>
+      </div>
+      <div class="poem-card" data-r>
+        <div class="poem-q">"</div>
+        <p class="poem-body">Derrière la caméra,<br>il y a toujours quelqu'un<br>qui décide ce qu'on verra—<br>et quelqu'un d'autre<br>qui choisit de regarder.</p>
+        <div class="poem-footer">
+          <span class="poem-ft-title">En production</span>
+          <span class="poem-ft-year">2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ COMPÉTENCES ════════════════════════════ -->
+<section class="section section-cream2" id="skills">
+  <div class="container">
+    <div class="skills-layout">
+      <div data-r>
+        <p class="eyebrow">Compétences</p>
+        <h2 class="h2">Ce que<br>je <em>maîtrise</em></h2>
+        <p class="body-lg" style="margin-top:20px;max-width:340px">
+          Une palette construite entre théorie et terrain — de la stratégie aux outils créatifs.
+        </p>
+        <a href="cv.html" class="btn btn-dark" style="margin-top:32px;display:inline-flex">CV détaillé</a>
+      </div>
+      <div class="skills-bars" data-r="right">
+        <div class="skill-row">
+          <div class="skill-top"><span>Rédaction & Copywriting</span><span class="skill-pct">90%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span>Réseaux sociaux & Digital</span><span class="skill-pct">85%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="--w:85%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span>Production audiovisuelle</span><span class="skill-pct">80%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="--w:80%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span>Relations presse & Médias</span><span class="skill-pct">75%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="--w:75%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span>Canva · InDesign · Premiere</span><span class="skill-pct">82%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="--w:82%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span>Écriture créative & Poésie</span><span class="skill-pct">95%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="--w:95%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ CONTACT ══════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-hd" data-r>
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 class="h2">Travaillons<br><em>ensemble</em></h2>
+      </div>
+    </div>
+    <div class="contact-wrap" data-r>
+      <div>
+        <p class="contact-quote">"Une idée, un projet, une collaboration ? Je suis disponible pour en discuter."</p>
+        <div class="contact-links">
+          <a href="mailto:elisa.moreau@email.com" class="contact-link"><i class="fa-regular fa-envelope"></i> elisa.moreau@email.com</a>
+          <a href="#" class="contact-link"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/elisa-moreau</a>
+          <a href="#" class="contact-link"><i class="fa-brands fa-instagram"></i> @elisa.creation</a>
+          <a href="#" class="contact-link"><i class="fa-solid fa-location-dot"></i> Paris, France</a>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form" onsubmit="handleForm(event)">
+        <div class="form-row">
+          <div class="fg"><label>Nom</label><input type="text" placeholder="Votre nom" required></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="votre@email.com" required></div>
+        </div>
+        <div class="fg"><label>Sujet</label><input type="text" placeholder="Projet, collaboration..."></div>
+        <div class="fg"><label>Message</label><textarea rows="5" placeholder="Votre message..." required></textarea></div>
+        <button type="submit" class="btn btn-dark" id="form-btn">
+          <i class="fa-regular fa-paper-plane"></i> Envoyer
+        </button>
+        <p id="form-msg" style="display:none;font-size:.78rem;color:var(--sand2);margin-top:8px"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="footer-brand">Elisa Moreau</span>
+    <nav class="footer-nav">
+      <a href="#about">À propos</a>
+      <a href="cv.html">CV</a>
+      <a href="missions.html">Missions</a>
+      <a href="creation.html">Écriture</a>
+      <a href="devoirs.html">Travaux</a>
     </nav>
-</header>
-
-<main class="wrapper">
-
-    <!-- HERO -->
-    <section class="hero-full section-spacing">
-        <div class="hero-grid">
-            <div class="hero-text">
-                <p class="hero-eyebrow">Communication &amp; Production</p>
-                <h1 class="hero-name">Elisa<br><em>Moreau</em></h1>
-                <p class="hero-role">Étudiante en communication professionnelle — spécialisée en production audiovisuelle, relations médias et écriture créative. Passionnée par le cinéma, la littérature et la création de contenus engagés.</p>
-                <div class="hero-actions">
-                    <a href="cv.html" class="btn-primary"><i class="fas fa-file-alt"></i> Mon CV</a>
-                    <a href="missions.html" class="btn-outline"><i class="fas fa-play"></i> Mes productions</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-num">2</div>
-                        <div class="stat-lbl">Productions</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-num">12+</div>
-                        <div class="stat-lbl">Travaux remis</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-num">6</div>
-                        <div class="stat-lbl">Poèmes écrits</div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-photo-wrap reveal">
-                <div class="hero-deco-line"></div>
-                <div class="hero-photo-frame">
-                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eee9e0,#f7f4ef);font-family:'Playfair Display',serif;font-size:5rem;color:rgba(184,134,11,0.15);font-style:italic;">E</div>
-                </div>
-                <div class="hero-photo-label">COM. PRO — 2025</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRÉSENTATION RAPIDE -->
-    <section class="card section-spacing reveal">
-        <div class="section-header">
-            <div>
-                <p class="section-eyebrow">À propos</p>
-                <h2 class="section-title">Qui suis-<em>je</em> ?</h2>
-            </div>
-            <div class="section-line"></div>
-        </div>
-        <div class="bio-layout">
-            <div class="bio-photo">
-                <div class="bio-photo-wrap">
-                    <div class="bio-photo-placeholder">E</div>
-                </div>
-                <p class="bio-photo-caption">Elisa Moreau — Paris</p>
-            </div>
-            <div class="bio-content">
-                <p class="bio-intro">"La communication est un art — celui de dire juste, au bon moment, au bon public."</p>
-                <p class="bio-text">Étudiante en communication professionnelle, je me spécialise dans la production audiovisuelle et la gestion de contenus médias. Mon parcours mêle théorie académique, expériences pratiques en entreprise et engagement artistique à travers l'écriture et la poésie.</p>
-                <p class="bio-text">Curieuse et rigoureuse, je suis attirée par les projets où la narration compte autant que la stratégie.</p>
-                <div class="bio-infos">
-                    <div class="bio-row"><span class="bio-label">Formation</span><span class="bio-value">BTS Communication</span></div>
-                    <div class="bio-row"><span class="bio-label">Spécialité</span><span class="bio-value">Production audiovisuelle</span></div>
-                    <div class="bio-row"><span class="bio-label">Localisation</span><span class="bio-value">Paris, France</span></div>
-                    <div class="bio-row"><span class="bio-label">Centres d'intérêt</span><span class="bio-value">Cinéma, Littérature, Photographie</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- APERÇU PRODUCTIONS -->
-    <section class="section-spacing">
-        <div class="section-header reveal">
-            <div>
-                <p class="section-eyebrow">Productions</p>
-                <h2 class="section-title">Deux œuvres,<br>deux <em>univers</em></h2>
-            </div>
-            <div class="section-line"></div>
-        </div>
-        <div class="mission-grid">
-            <div class="mission-card reveal">
-                <div class="mission-img">
-                    <div class="mission-img-placeholder">ES</div>
-                    <span class="mission-badge">Production</span>
-                </div>
-                <div class="mission-body">
-                    <p class="mission-company">Enfant Sauvage Productions</p>
-                    <h3 class="mission-title">Enfant Sauvage</h3>
-                    <p class="mission-desc">Court-métrage explorant la résilience et l'identité à travers le prisme de l'adolescence. Participation à la production, coordination plateau et communication du projet.</p>
-                    <div class="mission-footer">
-                        <div class="mission-tags">
-                            <span class="mission-tag">Court-métrage</span>
-                            <span class="mission-tag">Production</span>
-                        </div>
-                        <a href="missions.html" class="mission-link">Voir <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="mission-card reveal">
-                <div class="mission-img">
-                    <div class="mission-img-placeholder">DFN</div>
-                    <span class="mission-badge">Production</span>
-                </div>
-                <div class="mission-body">
-                    <p class="mission-company">Day for Night</p>
-                    <h3 class="mission-title">Day for Night</h3>
-                    <p class="mission-desc">Projet audiovisuel nocturne jouant sur la lumière artificielle et les ambiances urbaines. Coordination communication, réseaux sociaux et dossier de presse.</p>
-                    <div class="mission-footer">
-                        <div class="mission-tags">
-                            <span class="mission-tag">Audiovisuel</span>
-                            <span class="mission-tag">Communication</span>
-                        </div>
-                        <a href="missions.html" class="mission-link">Voir <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- APERÇU POÈMES -->
-    <section class="section-spacing">
-        <div class="section-header reveal">
-            <div>
-                <p class="section-eyebrow">Écriture</p>
-                <h2 class="section-title">Quelques <em>mots</em></h2>
-            </div>
-            <div class="section-line"></div>
-        </div>
-        <div class="poem-grid">
-            <div class="poem-card reveal">
-                <p class="poem-title">Silence entre les lignes</p>
-                <p class="poem-excerpt">Je cherche le mot qui tombe juste,<br>celui qui n'abîme pas le silence<br>mais lui donne une forme—<br>comme on pose une main<br>sur une épaule inconnue.</p>
-                <p class="poem-meta">2024 · Poème</p>
-                <a href="creation.html" class="poem-link">Lire la suite <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="poem-card reveal">
-                <p class="poem-title">Lumière d'hiver</p>
-                <p class="poem-excerpt">Il y a des matins en janvier<br>où la lumière hésite avant d'entrer,<br>comme si elle savait<br>qu'elle ne restera pas.</p>
-                <p class="poem-meta">2024 · Poème</p>
-                <a href="creation.html" class="poem-link">Lire la suite <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="poem-card reveal">
-                <p class="poem-title">En production</p>
-                <p class="poem-excerpt">Derrière la caméra,<br>il y a toujours quelqu'un<br>qui décide ce qu'on verra—<br>et quelqu'un d'autre<br>qui choisit de regarder.</p>
-                <p class="poem-meta">2025 · Poème</p>
-                <a href="creation.html" class="poem-link">Lire la suite <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<!-- AI CHATBOT -->
-<div id="ai-chat-container">
-    <div id="ai-window">
-        <div class="ai-header">
-            <span>Assistant — Portfolio Elisa</span>
-            <span style="cursor:pointer" onclick="toggleChat()"><i class="fas fa-times"></i></span>
-        </div>
-        <div id="ai-history">
-            <div class="ai-msg bot-msg">Bonjour ! Je suis l'assistant du portfolio d'Elisa. Que souhaitez-vous savoir sur son parcours ?</div>
-        </div>
-        <div class="ai-input-area">
-            <input type="text" id="ai-input" placeholder="Posez votre question..." onkeypress="handleKey(event)">
-            <button onclick="askAI()" style="background:none;border:none;color:var(--gold);cursor:pointer;font-size:0.9rem;">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </div>
-    </div>
-    <div id="ai-launcher" onclick="toggleChat()">
-        <i class="fas fa-comment"></i>
-    </div>
-</div>
-
-<footer class="site-footer">
-    <div class="footer-brand">Elisa Moreau</div>
-    <div class="footer-links">
-        <a href="cv.html">CV</a>
-        <a href="missions.html">Missions</a>
-        <a href="creation.html">Créations</a>
-        <a href="contact.html">Contact</a>
-    </div>
-    <div id="live-time"></div>
+    <span class="footer-copy">© 2025 — BTS Communication, Paris</span>
+  </div>
 </footer>
 
 <script src="js/main.js"></script>
