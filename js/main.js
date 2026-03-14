@@ -29,15 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(tick);
   }
 
-  /* Observer compteurs */
-  const kpiObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.querySelectorAll('[data-count]').forEach(el => animateCounter(el));
-      kpiObs.unobserve(e.target);
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('.hero-kpis').forEach(el => kpiObs.observe(el));
+  /* Compteurs — lancés 800ms après chargement */
+  setTimeout(() => {
+    document.querySelectorAll('[data-count]').forEach(el => animateCounter(el));
+  }, 800);
 
   /* ── Scroll reveal ──────────────────────────────────────── */
   const revealEls = document.querySelectorAll('[data-r], [data-stagger]');
