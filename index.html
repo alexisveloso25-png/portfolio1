@@ -186,12 +186,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   position:relative;
   overflow:hidden;
 }
-.hero-left{
-  position:relative;z-index:2;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:80px 80px 80px 80px;gap:32px;
-  max-width:760px;width:100%;
-}
+/* .hero-left defined below */
 .hero-pretitle{
   display:flex;align-items:center;gap:10px;
   font-size:.63rem;font-weight:600;letter-spacing:3px;
@@ -599,7 +594,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 @media(max-width:640px){
   .container{padding:0 20px}
-  .nav-inner{padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+  .nav-inner{padding:0 20px}
   .nav-links{display:none}
   .burger{display:flex}
   .hero-left{padding:50px 20px 36px}
@@ -615,14 +610,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 
 /* Hero centered layout overrides */
-.hero-left { max-width: 760px; width: 100%; }
 .hero-right img { width:100%; height:100%; object-fit:cover; object-position:top center; opacity:.15; }
 .hero-img-caption { display:none !important; }
 .hero-ph-letter { display:none !important; }
 .hero-stats { background: rgba(255,255,255,.7); backdrop-filter:blur(4px); }
 
-
-/* ══ HERO — photo détourée côte à côte ════════════════════════════ */
+/* ══ HERO — 2 colonnes propres ════════════════════════════════════ */
 .hero {
   min-height: 100svh;
   display: grid;
@@ -632,29 +625,17 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   position: relative;
   overflow: hidden;
 }
-
-/* Ligne verticale déco entre les deux colonnes */
 .hero::before {
   content: '';
   position: absolute;
-  top: 15%; bottom: 15%;
-  left: 50%;
+  top: 15%; bottom: 15%; left: 50%;
   width: 1px;
   background: linear-gradient(to bottom, transparent, var(--border2) 30%, var(--border2) 70%, transparent);
   pointer-events: none;
   z-index: 1;
 }
 
-/* ── Colonne gauche : texte ─────────────────────────────────────── */
-.hero-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 72px 60px 72px 48px;
-  gap: 28px;
-  position: relative;
-  z-index: 2;
-}
+/* ── Texte gauche ─────────────────────────────────────────────── */
 
 .hero-pretitle {
   display: flex;
@@ -671,10 +652,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   background: var(--sand2);
   flex-shrink: 0;
 }
-
 .hero-title {
   font-family: var(--serif);
-  font-size: clamp(3.4rem, 5.5vw, 6rem);
+  font-size: clamp(3.6rem, 5vw, 5.8rem);
   font-weight: 300;
   line-height: .9;
   letter-spacing: -.5px;
@@ -685,162 +665,108 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   font-style: italic;
   color: var(--sand2);
   display: block;
-  margin-top: 4px;
+  margin-top: 6px;
 }
-
 .hero-sub {
   font-family: var(--serif);
   font-size: 1rem;
   font-style: italic;
   color: var(--ink3);
   line-height: 1.75;
-  max-width: 420px;
+  max-width: 400px;
   border-left: 2px solid var(--sand-bdr);
   padding-left: 16px;
 }
-
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-
 .hero-stats {
   display: flex;
-  gap: 0;
   border: 1px solid var(--border);
   border-radius: var(--r);
   overflow: hidden;
-  align-self: flex-start;
-  background: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.75);
 }
 .hero-stat {
   padding: 14px 24px;
   border-right: 1px solid var(--border);
 }
 .hero-stat:last-child { border-right: none; }
-.stat-n {
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--ink);
-  line-height: 1;
-}
-.stat-l {
-  font-size: .55rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--ink4);
-  margin-top: 3px;
-}
+.stat-n { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: var(--ink); line-height: 1; }
+.stat-l { font-size: .55rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink4); margin-top: 3px; }
 
-/* ── Colonne droite : photo détourée ────────────────────────────── */
+/* ── Photo droite ──────────────────────────────────────────────── */
 .hero-right {
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   overflow: hidden;
-  /* Fond crème légèrement plus foncé pour faire ressortir le PNG transparent */
-  background: radial-gradient(ellipse at 50% 80%, var(--cream3) 0%, var(--cream2) 60%, var(--cream) 100%);
+  background: radial-gradient(ellipse at 50% 75%, var(--cream3) 0%, var(--cream2) 55%, var(--cream) 100%);
   z-index: 2;
 }
-
-/* Cercle déco derrière la photo */
 .hero-right::before {
   content: '';
   position: absolute;
-  bottom: -5%;
-  left: 50%;
+  bottom: -5%; left: 50%;
   transform: translateX(-50%);
-  width: 85%;
-  aspect-ratio: 1;
+  width: 80%; aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(196,168,130,.18) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(196,168,130,.2) 0%, transparent 70%);
   pointer-events: none;
 }
-
-/* Demi-cercle au sol */
 .hero-right::after {
   content: '';
   position: absolute;
   bottom: 0; left: 10%; right: 10%;
-  height: 2px;
+  height: 1px;
   background: linear-gradient(to right, transparent, var(--sand-bdr), transparent);
 }
-
 .hero-img-main {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  position: relative;
 }
-
-/* La photo PNG détourée */
 .hero-img-main img {
   width: auto;
-  max-width: 88%;
-  height: 92%;
+  max-width: 82%;
+  height: 90%;
   object-fit: contain;
   object-position: bottom center;
-  display: block;
   position: relative;
   z-index: 2;
-  /* Légère ombre portée sous le personnage */
-  filter: drop-shadow(0 24px 40px rgba(120,90,60,.15));
+  filter: drop-shadow(0 20px 36px rgba(100,70,40,.13));
   transition: transform .6s cubic-bezier(.22,1,.36,1);
 }
-.hero:hover .hero-img-main img {
-  transform: translateY(-6px);
-}
-
-/* Badge flottant */
+.hero:hover .hero-img-main img { transform: translateY(-5px); }
 .hero-photo-badge {
   position: absolute;
-  bottom: 32px; right: 32px;
-  background: var(--ink);
-  color: rgba(255,255,255,.85);
-  font-family: var(--sans);
-  font-size: .52rem;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  padding: 8px 14px;
-  border-radius: 2px;
-  z-index: 5;
+  bottom: 24px; right: 24px;
+  background: var(--ink); color: rgba(255,255,255,.85);
+  font-family: var(--sans); font-size: .52rem;
+  font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 7px 13px; border-radius: 2px; z-index: 5;
 }
-
-/* Étiquette en haut à gauche */
 .hero-photo-tag {
   position: absolute;
-  top: 36px; left: 32px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255,255,255,.8);
+  top: 28px; left: 24px;
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.85);
   backdrop-filter: blur(8px);
   border: 1px solid var(--border);
   border-radius: 99px;
-  padding: 7px 14px 7px 10px;
-  font-size: .62rem;
-  font-weight: 600;
-  letter-spacing: .5px;
-  color: var(--ink2);
-  z-index: 5;
+  padding: 6px 14px 6px 10px;
+  font-size: .62rem; font-weight: 600; letter-spacing: .3px;
+  color: var(--ink2); z-index: 5;
 }
 .hero-photo-tag-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--sand2);
-  flex-shrink: 0;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--sand2); flex-shrink: 0;
 }
-
 .hero-img-caption { display: none !important; }
 .hero-ph-letter   { display: none !important; }
-
-/* ── Scroll indicator ───────────────────────────────────────────── */
 .hero-scroll-hint {
   position: absolute;
-  bottom: 28px; left: 48px;
+  bottom: 28px; left: 64px;
   display: flex; align-items: center; gap: 10px;
   font-size: .58rem; font-weight: 600;
   letter-spacing: 2.5px; text-transform: uppercase;
@@ -859,24 +785,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 @keyframes slideRight { to { left: 100% } }
 
-/* ── Responsive ─────────────────────────────────────────────────── */
+/* ── Responsive ────────────────────────────────────────────────── */
 @media (max-width: 860px) {
-  .hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 380px;
-    min-height: auto;
-  }
+  .hero { grid-template-columns: 1fr; grid-template-rows: auto 360px; }
   .hero::before { display: none; }
-  .hero-left { padding: 56px 24px 32px; order: 1; }
-  .hero-right { height: 380px; order: 2; }
-  .hero-img-main img { height: 100%; max-width: 70%; }
+  .hero-left { padding: 56px 28px 32px; order: 1; }
+  .hero-right { height: 360px; order: 2; }
+  .hero-img-main img { height: 100%; max-width: 68%; }
   .hero-scroll-hint { display: none; }
 }
 @media (max-width: 520px) {
   .hero-title { font-size: 2.8rem; }
-  .hero-right { height: 300px; }
-  .hero-stats { flex-wrap: wrap; }
-  .hero-img-main img { max-width: 85%; }
+  .hero-right { height: 280px; }
+  .hero-img-main img { max-width: 82%; }
 }
 
   </style>
@@ -898,18 +819,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-
-  <!-- Gauche : texte -->
   <div class="hero-left">
     <div class="hero-pretitle" data-a="0">
       <span class="hero-pretitle-line"></span>
       Cheffe de projet digital &middot; Cinéma &amp; Audiovisuel
     </div>
     <h1 class="hero-title" data-a="1">
-      Elisa
-      <em>Huart-Vasak</em>
+      Elisa<em>Huart-Vasak</em>
     </h1>
     <p class="hero-sub" data-a="2">
       Étudiante en Licence Cinéma &amp; Audiovisuel à la Sorbonne Nouvelle, en alternance chez Day For Night Production.
@@ -921,58 +838,39 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </a>
     </div>
     <div class="hero-stats" data-a="3">
-      <div class="hero-stat">
-        <div class="stat-n">3 ans</div>
-        <div class="stat-l">Sorbonne</div>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-n">DFN</div>
-        <div class="stat-l">Alternance</div>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-n">Sept. 26</div>
-        <div class="stat-l">Disponible</div>
-      </div>
+      <div class="hero-stat"><div class="stat-n">3 ans</div><div class="stat-l">Sorbonne</div></div>
+      <div class="hero-stat"><div class="stat-n">DFN</div><div class="stat-l">Alternance</div></div>
+      <div class="hero-stat"><div class="stat-n">Sept. 26</div><div class="stat-l">Disponible</div></div>
     </div>
   </div>
 
-  <!-- Droite : photo PNG détourée -->
   <div class="hero-right" data-a="4">
     <div class="hero-img-main">
-      <img src="assets/photo.png" alt="Elisa Huart-Vasak">
+      <img src="assets/photo1.png" alt="Elisa Huart-Vasak">
     </div>
-    <!-- Badge -->
     <div class="hero-photo-badge">Portfolio 2025</div>
-    <!-- Tag disponibilité -->
     <div class="hero-photo-tag">
       <span class="hero-photo-tag-dot"></span>
       En recherche d&rsquo;alternance
     </div>
   </div>
 
-  <!-- Scroll indicator -->
   <div class="hero-scroll-hint">
-    <span class="hero-scroll-line"></span>
-    Scroll
+    <span class="hero-scroll-line"></span>Scroll
   </div>
-
 </section>
 
 <div class="divider"></div>
 
-<!-- À PROPOS -->
 <section class="section" id="about">
   <div class="container">
     <div class="section-hd" data-r>
-      <div>
-        <p class="eyebrow">À propos</p>
-        <h2 class="h2">Cinéma, production<br>&amp; <em>stratégie digitale</em></h2>
-      </div>
+      <div><p class="eyebrow">À propos</p><h2 class="h2">Cinéma, production<br>&amp; <em>stratégie digitale</em></h2></div>
     </div>
     <div class="about-grid" data-r="scale">
       <div class="about-photo" style="background:var(--cream2)">
-        <img src="assets/photo.png" alt="Elisa Huart-Vasak"
-             style="width:100%;height:100%;object-fit:contain;object-position:bottom center;padding-bottom:0">
+        <img src="assets/photo1.png" alt="Elisa Huart-Vasak"
+             style="width:100%;height:100%;object-fit:contain;object-position:bottom center">
         <div class="about-photo-label"><p class="caption">Elisa Huart-Vasak &middot; Paris 75011</p></div>
       </div>
       <div class="about-body">
@@ -980,12 +878,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <p class="about-text">En alternance chez <strong>Day For Night Production</strong> depuis septembre 2025, je gère l&rsquo;administration, la lecture de scénarios, la rédaction d&rsquo;intentions de projet et la mise en page de dossiers.</p>
         <p class="about-text">Après un Mastère Manager de la Stratégie Marketing (Digital School of Paris, 2026-2028), je vise un poste de <strong>cheffe de projet digital en apprentissage dès septembre 2026</strong>.</p>
         <div class="about-pills">
-          <span class="tag">Gestion réseaux sociaux</span>
-          <span class="tag">Rédaction de contenus</span>
-          <span class="tag">Montage photo/vidéo</span>
-          <span class="tag">Coordination plateau</span>
-          <span class="tag">Canva &middot; Premiere Pro</span>
-          <span class="tag">Illustrator &middot; CapCut</span>
+          <span class="tag">Gestion réseaux sociaux</span><span class="tag">Rédaction de contenus</span>
+          <span class="tag">Montage photo/vidéo</span><span class="tag">Coordination plateau</span>
+          <span class="tag">Canva &middot; Premiere Pro</span><span class="tag">Illustrator &middot; CapCut</span>
         </div>
         <div class="about-info-grid">
           <div class="about-info-item"><p class="info-k">Naissance</p><p class="info-v">29/01/2005 — 21 ans</p></div>
@@ -1004,10 +899,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <section class="section section-cream" id="works">
   <div class="container">
     <div class="section-hd" data-r>
-      <div>
-        <p class="eyebrow">Alternance en production</p>
-        <h2 class="h2">Day For Night<br><em>Production</em></h2>
-      </div>
+      <div><p class="eyebrow">Alternance en production</p><h2 class="h2">Day For Night<br><em>Production</em></h2></div>
       <a href="missions.html" class="link-more">Toutes les missions <i class="fa-solid fa-arrow-right"></i></a>
     </div>
     <div class="works-feat" data-r>
@@ -1022,10 +914,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="works-feat-body">
         <div class="works-num">01</div>
-        <div>
-          <p class="works-sub">Assistante de production en alternance</p>
-          <h3 class="works-title">Day For Night Production</h3>
-        </div>
+        <div><p class="works-sub">Assistante de production en alternance</p><h3 class="works-title">Day For Night Production</h3></div>
         <p class="works-desc">Gestion administrative, lecture et analyse de scénarios, rédaction d&rsquo;intentions de projet, mise en page et montage de dossiers.</p>
         <div class="works-role">
           <p class="works-role-k">Mes missions</p>
@@ -1065,12 +954,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <div data-r>
         <p class="eyebrow">Compétences</p>
         <h2 class="h2">Outils &amp;<br><em>savoir-faire</em></h2>
-        <p class="body-lg" style="margin-top:20px;max-width:340px">
-          Des compétences techniques et créatives au service de projets audiovisuels et digitaux.
-        </p>
-        <a href="cv.html" class="btn btn-dark" style="margin-top:28px;display:inline-flex">
-          <i class="fa-regular fa-file-pdf"></i> CV complet
-        </a>
+        <p class="body-lg" style="margin-top:20px;max-width:340px">Des compétences techniques et créatives au service de projets audiovisuels et digitaux.</p>
+        <a href="cv.html" class="btn btn-dark" style="margin-top:28px;display:inline-flex"><i class="fa-regular fa-file-pdf"></i> CV complet</a>
       </div>
       <div class="skills-bars" data-r="right">
         <div class="skill-row"><div class="skill-top"><span>Gestion des réseaux sociaux</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div></div>
@@ -1089,10 +974,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <section class="section section-cream2" id="contact">
   <div class="container">
     <div class="section-hd" data-r>
-      <div>
-        <p class="eyebrow">Contact</p>
-        <h2 class="h2">Travaillons<br><em>ensemble</em></h2>
-      </div>
+      <div><p class="eyebrow">Contact</p><h2 class="h2">Travaillons<br><em>ensemble</em></h2></div>
     </div>
     <div class="contact-wrap" data-r>
       <div>
@@ -1101,7 +983,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <a href="mailto:huartvasak@gmail.com" class="contact-link"><i class="fa-regular fa-envelope"></i> huartvasak@gmail.com</a>
           <a href="tel:+33783854578" class="contact-link"><i class="fa-solid fa-phone"></i> +33 7 83 85 45 78</a>
           <a href="https://linkedin.com/in/elisa-huart-vasak" target="_blank" class="contact-link"><i class="fa-brands fa-linkedin"></i> Elisa Huart-Vasak</a>
-          <span class="contact-link" style="cursor:default"><i class="fa-solid fa-location-dot"></i> 75011 Paris</span>
+          <span class="contact-link"><i class="fa-solid fa-location-dot"></i> 75011 Paris</span>
         </div>
       </div>
       <form class="contact-form" id="contact-form" onsubmit="handleForm(event)">
@@ -1111,9 +993,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         </div>
         <div class="fg"><label>Sujet</label><input type="text" placeholder="Alternance, projet..."></div>
         <div class="fg"><label>Message</label><textarea rows="5" placeholder="Votre message..." required></textarea></div>
-        <button type="submit" class="btn btn-dark" id="form-btn">
-          <i class="fa-regular fa-paper-plane"></i> Envoyer
-        </button>
+        <button type="submit" class="btn btn-dark" id="form-btn"><i class="fa-regular fa-paper-plane"></i> Envoyer</button>
         <p id="form-msg" style="display:none;font-size:.78rem;color:var(--sand2);margin-top:8px"></p>
       </form>
     </div>
@@ -1124,11 +1004,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   <div class="container footer-inner">
     <span class="footer-brand">Elisa Huart-Vasak</span>
     <nav class="footer-nav">
-      <a href="#about">À propos</a>
-      <a href="cv.html">CV</a>
-      <a href="missions.html">Missions</a>
-      <a href="creation.html">Écriture</a>
-      <a href="devoirs.html">Travaux</a>
+      <a href="#about">À propos</a><a href="cv.html">CV</a>
+      <a href="missions.html">Missions</a><a href="creation.html">Écriture</a><a href="devoirs.html">Travaux</a>
     </nav>
     <span class="footer-copy">&copy; 2025 &mdash; Sorbonne Nouvelle &middot; Licence Cinéma &amp; Audiovisuel</span>
   </div>
