@@ -68,100 +68,135 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 /* ══════════════════════════════════════════════════════════
    HERO — 2 colonnes clean
 ══════════════════════════════════════════════════════════ */
+/* ══ HERO ══════════════════════════════════════════════════ */
 .hero {
   height: 100svh;
   min-height: 580px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
+  position: relative;
 }
 
-/* Colonne gauche — texte centré verticalement */
+/* ── Colonne gauche ─────────────────────────────────────── */
 .hero-left {
+  order: 1;
   background: var(--cream);
-  display: grid;
-  place-content: center start;
-  padding: 0 56px 0 8%;
-  padding-top: 64px; /* compense la nav fixe */
-  gap: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;   /* ancré en bas */
+  align-items: flex-start;
+  padding: 0 56px 56px 8%;
+  gap: 22px;
   position: relative;
   z-index: 2;
 }
 
-/* Trait vertical séparateur */
-.hero-left::after {
-  content:'';
-  position:absolute; top:15%; right:0; bottom:15%;
-  width:1px;
-  background:linear-gradient(to bottom, transparent, var(--border2) 30%, var(--border2) 70%, transparent);
+/* Grand numéro déco en haut */
+.hero-deco-num {
+  position: absolute;
+  top: 64px; left: 6%;
+  font-family: var(--serif);
+  font-size: clamp(6rem, 18vw, 14rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1;
+  color: rgba(196,168,130,.1);
+  user-select: none;
+  pointer-events: none;
 }
 
 .hero-pretitle {
-  display:flex; align-items:center; gap:10px;
-  font-size:.6rem; font-weight:600; letter-spacing:3px;
-  text-transform:uppercase; color:var(--sand2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--sand2);
 }
 .hero-pretitle::before {
-  content:''; width:22px; height:1px;
-  background:var(--sand2); flex-shrink:0;
+  content: '';
+  width: 22px; height: 1px;
+  background: var(--sand2);
+  flex-shrink: 0;
 }
 
 .hero-name {
-  font-family:var(--serif);
-  font-size:clamp(3.5rem,5.2vw,6rem);
-  font-weight:300; line-height:.9; letter-spacing:-.5px; color:var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(3.2rem, 5vw, 5.5rem);
+  font-weight: 300;
+  line-height: .92;
+  letter-spacing: -.5px;
+  color: var(--ink);
+  margin: 0;
 }
-.hero-name em { font-style:italic; color:var(--sand2); display:block; margin-top:4px }
+.hero-name em {
+  font-style: italic;
+  color: var(--sand2);
+  display: block;
+  margin-top: 4px;
+}
+
+/* Ligne séparatrice */
+.hero-sep {
+  width: 40px;
+  height: 1px;
+  background: var(--border2);
+}
 
 .hero-desc {
-  font-family:var(--serif);
-  font-size:1rem; font-style:italic; color:var(--ink3);
-  line-height:1.75; max-width:380px;
-  padding-left:16px; border-left:2px solid var(--sand-bdr);
+  font-family: var(--serif);
+  font-size: .95rem;
+  font-style: italic;
+  color: var(--ink3);
+  line-height: 1.7;
+  max-width: 360px;
 }
 
-.hero-btns { display:flex; gap:12px; flex-wrap:wrap }
-
-.btn {
-  display:inline-flex; align-items:center; gap:8px;
-  font-family:var(--sans); font-size:.72rem; font-weight:600;
-  letter-spacing:.8px; padding:12px 26px; border-radius:var(--r);
-  transition:.25s var(--ease); cursor:pointer; border:none;
-}
-.btn-dark { background:var(--ink); color:var(--white) }
-.btn-dark:hover { background:var(--sand2); transform:translateY(-2px); box-shadow:0 6px 20px rgba(184,149,110,.25) }
-.btn-outline { background:transparent; color:var(--ink2); border:1.5px solid var(--border2) }
-.btn-outline:hover { border-color:var(--sand); color:var(--sand2); transform:translateY(-2px) }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
 .hero-kpis {
-  display:flex; gap:0;
-  border:1px solid var(--border); border-radius:var(--r);
-  overflow:hidden; background:rgba(255,255,255,.75);
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: rgba(255,255,255,.7);
 }
-.kpi { padding:12px 22px; border-right:1px solid var(--border) }
-.kpi:last-child { border-right:none }
-.kpi-n { font-family:var(--serif); font-size:1.4rem; font-weight:500; color:var(--ink); line-height:1 }
-.kpi-l { font-size:.52rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink4); margin-top:3px }
+.kpi { padding: 12px 22px; border-right: 1px solid var(--border); }
+.kpi:last-child { border-right: none; }
+.kpi-n { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; color: var(--ink); line-height: 1; }
+.kpi-l { font-size: .52rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink4); margin-top: 3px; }
 
 /* Scroll hint */
 .hero-scroll {
-  display:flex; align-items:center; gap:9px;
-  font-size:.56rem; font-weight:600; letter-spacing:2.5px;
-  text-transform:uppercase; color:var(--ink4);
+  display: flex; align-items: center; gap: 9px;
+  font-size: .56rem; font-weight: 600; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--ink4);
 }
 .hero-scroll-bar {
-  width:32px; height:1px; background:var(--border2);
-  position:relative; overflow:hidden;
+  width: 32px; height: 1px;
+  background: var(--border2); position: relative; overflow: hidden;
 }
 .hero-scroll-bar::after {
-  content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-  background:var(--sand); animation:scrollAnim 2s var(--ease) infinite;
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: var(--sand); animation: scrollAnim 2s var(--ease) infinite;
 }
-@keyframes scrollAnim { to { left:100% } }
+@keyframes scrollAnim { to { left: 100% } }
 
-/* Colonne droite — photo détourée */
+/* Trait vertical déco */
+.hero-left::after {
+  content: '';
+  position: absolute; top: 15%; right: 0; bottom: 15%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--border2) 30%, var(--border2) 70%, transparent);
+}
+
+/* ── Colonne droite : photo ─────────────────────────────── */
 .hero-right {
-  background: radial-gradient(ellipse at 50% 80%, var(--cream3) 0%, var(--cream2) 55%, var(--cream) 100%);
+  order: 2;
+  background: radial-gradient(ellipse at 50% 75%, var(--cream3) 0%, var(--cream2) 55%, var(--cream) 100%);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -169,49 +204,60 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   overflow: hidden;
   padding-top: 64px;
 }
-
-/* Halo doux derrière Elisa */
 .hero-right::before {
-  content:'';
-  position:absolute; bottom:0; left:50%;
-  transform:translateX(-50%);
-  width:75%; padding-bottom:75%;
-  border-radius:50%;
-  background:radial-gradient(ellipse, rgba(196,168,130,.22) 0%, transparent 70%);
+  content: '';
+  position: absolute; bottom: -5%; left: 50%;
+  transform: translateX(-50%);
+  width: 80%; padding-bottom: 80%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(196,168,130,.2) 0%, transparent 70%);
 }
-
-/* Ligne au sol */
 .hero-right::after {
-  content:'';
-  position:absolute; bottom:0; left:8%; right:8%; height:1px;
-  background:linear-gradient(to right, transparent, var(--sand-bdr), transparent);
+  content: '';
+  position: absolute; bottom: 0; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--sand-bdr), transparent);
 }
-
 .hero-photo {
-  width:auto; max-width:86%; height:88%;
-  object-fit:contain; object-position:bottom center;
-  position:relative; z-index:2;
-  filter:drop-shadow(0 16px 32px rgba(100,70,40,.12));
-  transition:transform .6s var(--ease);
+  width: auto; max-width: 84%; height: 90%;
+  object-fit: contain; object-position: bottom center;
+  position: relative; z-index: 2;
+  filter: drop-shadow(0 16px 32px rgba(100,70,40,.12));
+  transition: transform .6s var(--ease);
 }
-.hero:hover .hero-photo { transform:translateY(-5px) }
-
-/* Badge et tag flottants */
+.hero:hover .hero-photo { transform: translateY(-5px); }
 .hero-badge {
-  position:absolute; bottom:22px; right:22px;
-  background:var(--ink); color:rgba(255,255,255,.85);
-  font-size:.5rem; font-weight:700; letter-spacing:2.5px;
-  text-transform:uppercase; padding:7px 12px; border-radius:2px; z-index:5;
+  position: absolute; bottom: 22px; right: 22px;
+  background: var(--ink); color: rgba(255,255,255,.85);
+  font-size: .5rem; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; padding: 7px 12px; border-radius: 2px; z-index: 5;
 }
 .hero-tag {
-  position:absolute; top:24px; left:24px;
-  display:flex; align-items:center; gap:7px;
-  background:rgba(255,255,255,.88); backdrop-filter:blur(8px);
-  border:1px solid var(--border); border-radius:99px;
-  padding:6px 14px 6px 10px;
-  font-size:.6rem; font-weight:600; color:var(--ink2); z-index:5;
+  position: absolute; top: 80px; left: 20px;
+  display: flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,.88); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: 99px;
+  padding: 6px 14px 6px 10px;
+  font-size: .6rem; font-weight: 600; color: var(--ink2); z-index: 5;
 }
-.hero-tag-dot { width:7px; height:7px; border-radius:50%; background:var(--sand2); flex-shrink:0 }
+.hero-tag-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sand2); flex-shrink: 0; }
+.hero-img-caption { display: none !important; }
+.hero-ph-letter   { display: none !important; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; grid-template-rows: auto 340px; height: auto; min-height: auto; }
+  .hero-left { padding: 80px 24px 40px; justify-content: flex-start; }
+  .hero-left::after { display: none; }
+  .hero-deco-num { font-size: 5rem; top: 8px; }
+  .hero-right { height: 340px; padding-top: 0; }
+  .hero-photo { max-width: 62%; height: 95%; }
+  .hero-tag { top: 12px; }
+}
+@media (max-width: 520px) {
+  .hero-name { font-size: 2.8rem; }
+  .hero-right { height: 270px; }
+  .hero-photo { max-width: 78%; }
+}
 
 /* ══════════════════════════════════════════════════════════
    BUTTONS / ATOMS / LAYOUT
@@ -346,7 +392,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
    RESPONSIVE
 ══════════════════════════════════════════════════════════ */
 @media (max-width:900px) {
-  .hero { grid-template-columns:1fr; grid-template-rows:auto 340px; height:auto; min-height:auto }
   .hero-left { padding:56px 24px 36px; }
   .hero-left::after { display:none }
   .hero-right { height:340px }
