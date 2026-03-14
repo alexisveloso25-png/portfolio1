@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Scroll reveal ──────────────────────────────────── */
   const revealEls = document.querySelectorAll('[data-r]');
 
-  if ('IntersectionObserver' in window) {
+  if ('IntersectionObserver' in window && revealEls.length) {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (!e.isIntersecting) return;
@@ -23,17 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
         e.target.querySelectorAll('.skill-fill').forEach(b => b.classList.add('animated'));
         obs.unobserve(e.target);
       });
-    }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+    }, { threshold: 0.05 });
 
     revealEls.forEach((el, i) => {
+      el.classList.add('will-animate');
       el.style.transitionDelay = (i % 4 * 0.07) + 's';
       obs.observe(el);
     });
-
   } else {
-    /* Fallback — révèle tout immédiatement si pas d'IntersectionObserver */
+    /* Pas d'IntersectionObserver — tout visible directement */
     revealEls.forEach(el => {
-      el.classList.add('in');
       el.querySelectorAll('.skill-fill').forEach(b => b.classList.add('animated'));
     });
   }
