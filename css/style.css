@@ -76,15 +76,13 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   overflow: hidden;
 }
 
-/* Colonne gauche — fond crème, texte centré verticalement */
+/* Colonne gauche — texte centré verticalement */
 .hero-left {
   background: var(--cream);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  /* padding-top = nav(64px) + equal margin ; padding-bottom = equal margin */
-  padding: 64px 56px 0 8%;
+  display: grid;
+  place-content: center start;
+  padding: 0 56px 0 8%;
+  padding-top: 64px; /* compense la nav fixe */
   gap: 26px;
   position: relative;
   z-index: 2;
@@ -240,11 +238,13 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 .link-more:hover { color:var(--sand2); border-color:var(--sand2); gap:11px }
 
 /* ── REVEAL ──── */
-[data-r] { opacity:0; transform:translateY(20px); transition:opacity .75s var(--ease), transform .75s var(--ease) }
-[data-r="right"] { transform:translateX(20px) }
-[data-r="left"] { transform:translateX(-20px) }
-[data-r="scale"] { transform:scale(.97); opacity:0 }
-[data-r].in { opacity:1; transform:none }
+/* Reveal — visible par défaut, animation au scroll si JS disponible */
+[data-r] { opacity:1; transform:none }
+[data-r].will-animate { opacity:0; transform:translateY(20px); transition:opacity .7s var(--ease), transform .7s var(--ease) }
+[data-r="right"].will-animate { transform:translateX(20px) }
+[data-r="left"].will-animate  { transform:translateX(-20px) }
+[data-r="scale"].will-animate { transform:scale(.97); opacity:0 }
+[data-r].will-animate.in { opacity:1; transform:none }
 
 /* ── HERO ENTRY ANIMS ── */
 [data-a] { opacity:0 }
