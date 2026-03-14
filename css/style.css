@@ -73,6 +73,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   min-height:600px;
   display:grid;
   grid-template-columns:1fr 1fr;
+  align-items:stretch;
   padding-top:64px;
   overflow:hidden;
 }
@@ -84,10 +85,11 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  padding:60px 56px 60px 8%;
+  padding:80px 56px 80px 8%;
   gap:26px;
   position:relative;
   z-index:2;
+  height:100%;
 }
 
 /* Trait vertical séparateur */
