@@ -1,5 +1,5 @@
 /* ================================
-   ELISA MOREAU — main.js (clean)
+   ELISA HUART-VASAK — main.js
    ================================ */
 
 /* NAV scroll shadow */
@@ -10,55 +10,69 @@ if (nav) {
   }, { passive: true });
 }
 
-/* Scroll reveal */
 document.addEventListener('DOMContentLoaded', () => {
 
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (!e.isIntersecting) return;
-      setTimeout(() => {
+  /* ── Scroll reveal ──────────────────────────────────── */
+  const revealEls = document.querySelectorAll('[data-r]');
+
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
         e.target.classList.add('in');
         e.target.querySelectorAll('.skill-fill').forEach(b => b.classList.add('animated'));
-      }, (Array.from(document.querySelectorAll('[data-r]')).indexOf(e.target) % 5) * 80);
-      obs.unobserve(e.target);
+        obs.unobserve(e.target);
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+
+    revealEls.forEach((el, i) => {
+      el.style.transitionDelay = (i % 4 * 0.07) + 's';
+      obs.observe(el);
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-  document.querySelectorAll('[data-r]').forEach(el => obs.observe(el));
+  } else {
+    /* Fallback — révèle tout immédiatement si pas d'IntersectionObserver */
+    revealEls.forEach(el => {
+      el.classList.add('in');
+      el.querySelectorAll('.skill-fill').forEach(b => b.classList.add('animated'));
+    });
+  }
 
-  /* Skill bars visible on load (hero area) */
+  /* Skill bars déjà visibles au chargement */
   const skillObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       e.target.classList.add('animated');
       skillObs.unobserve(e.target);
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.3 });
   document.querySelectorAll('.skill-fill').forEach(b => skillObs.observe(b));
 
-  /* Live clock */
-  const clock = document.getElementById('live-time');
-  if (clock) {
-    const t = () => { clock.textContent = new Date().toLocaleTimeString('fr-FR'); };
-    t(); setInterval(t, 1000);
-  }
-
-  /* Burger */
+  /* ── Burger menu ─────────────────────────────────────── */
   const burger = document.getElementById('burger');
-  const links = document.querySelector('.nav-links');
+  const links  = document.querySelector('.nav-links');
   if (burger && links) {
     let open = false;
     burger.addEventListener('click', () => {
       open = !open;
       links.style.cssText = open
-        ? 'display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);padding:12px 20px 20px;border-bottom:1px solid #ddd9d2;gap:2px;z-index:899'
+        ? 'display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);padding:16px 24px 20px;border-bottom:1px solid #ddd9d2;gap:4px;z-index:899'
         : '';
       if (!open) links.removeAttribute('style');
     });
+    /* Fermer au clic sur un lien */
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => { open = false; links.removeAttribute('style'); });
+    });
   }
+
+  /* ── Contact form ────────────────────────────────────── */
+  const form = document.getElementById('contact-form');
+  if (form) form.addEventListener('submit', handleForm);
+
 });
 
-/* Contact form */
+/* Contact form handler */
 function handleForm(e) {
   e.preventDefault();
   const btn = document.getElementById('form-btn');
