@@ -26,6 +26,9 @@
   </div>
 </nav>
 
+<!-- Barre de progression lecture -->
+<div id="read-progress" style="position:fixed;top:0;left:0;height:2.5px;background:linear-gradient(to right,var(--sand),var(--sand2));z-index:9999;width:0%;transition:width .08s linear;pointer-events:none"></div>
+
 <section class="hero">
 
   <!-- Droite : photo (order:1 en mobile) -->
@@ -107,11 +110,11 @@
 
 <section class="section section-cream" id="works">
   <div class="container">
-    <div class="section-hd" data-r>
+    <div class="section-hd" data-r="fade">
       <div><p class="eyebrow">Alternance en production</p><h2 class="h2">Day For Night<br><em>Production</em></h2></div>
       <a href="missions.html" class="link-more">Toutes les missions <i class="fa-solid fa-arrow-right"></i></a>
     </div>
-    <div class="works-feat" data-r>
+    <div class="works-feat" data-r="scale">
       <div class="works-feat-img">
         <div class="works-feat-initial">DFN</div>
         <span class="works-feat-badge">Alternance &middot; Sept. 2025 &ndash; Août 2026</span>
@@ -127,10 +130,10 @@
         <div class="works-tags"><span class="tag">Production</span><span class="tag">Scénario</span><span class="tag">Rédaction</span><span class="tag">Administration</span></div>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px">
-      <div class="work-sm" data-r><div class="work-sm-icon"><i class="fa-solid fa-film"></i></div><p class="work-sm-title">Analyse de scénarios</p><p class="work-sm-desc">Lecture, analyse et rapports sur des projets en développement.</p></div>
-      <div class="work-sm" data-r><div class="work-sm-icon"><i class="fa-solid fa-pen-nib"></i></div><p class="work-sm-title">Rédaction de dossiers</p><p class="work-sm-desc">Rédaction d&rsquo;intentions de projet, mise en page et montage.</p></div>
-      <div class="work-sm" data-r><div class="work-sm-icon"><i class="fa-solid fa-folder-open"></i></div><p class="work-sm-title">Gestion administrative</p><p class="work-sm-desc">Organisation administrative quotidienne de la production.</p></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px" data-stagger>
+      <div class="work-sm"><div class="work-sm-icon"><i class="fa-solid fa-film"></i></div><p class="work-sm-title">Analyse de scénarios</p><p class="work-sm-desc">Lecture, analyse et rapports sur des projets en développement.</p></div>
+      <div class="work-sm"><div class="work-sm-icon"><i class="fa-solid fa-pen-nib"></i></div><p class="work-sm-title">Rédaction de dossiers</p><p class="work-sm-desc">Rédaction d&rsquo;intentions de projet, mise en page et montage.</p></div>
+      <div class="work-sm"><div class="work-sm-icon"><i class="fa-solid fa-folder-open"></i></div><p class="work-sm-title">Gestion administrative</p><p class="work-sm-desc">Organisation administrative quotidienne de la production.</p></div>
     </div>
   </div>
 </section>
@@ -162,8 +165,8 @@
 
 <section class="section section-cream2" id="contact">
   <div class="container">
-    <div class="section-hd" data-r><div><p class="eyebrow">Contact</p><h2 class="h2">Travaillons<br><em>ensemble</em></h2></div></div>
-    <div class="contact-wrap" data-r>
+    <div class="section-hd" data-r="fade"><div><p class="eyebrow">Contact</p><h2 class="h2">Travaillons<br><em>ensemble</em></h2></div></div>
+    <div class="contact-wrap" data-r="scale">
       <div>
         <p class="contact-quote">&laquo;&nbsp;En recherche d&rsquo;un poste de cheffe de projet digital en apprentissage à partir de septembre 2026. Rythme&nbsp;: 3 semaines entreprise / 1 semaine formation.&nbsp;&raquo;</p>
         <div class="contact-links">
