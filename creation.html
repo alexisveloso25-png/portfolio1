@@ -10,763 +10,422 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* ═══════════════════════════════════════════
-       CREATION PAGE — styles spécifiques
-    ═══════════════════════════════════════════ */
-
-    /* ── Hero écriture ─────────────────────── */
-    .writing-hero {
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-      overflow: hidden;
-      background: var(--ink);
-      padding: 0 0 80px;
+    /* ── Page hero ─────────────────────────── */
+    .creation-hero {
+      padding:140px 0 72px;
+      background:var(--cream);
+      border-bottom:1px solid var(--border);
+      position:relative;
+      overflow:hidden;
+    }
+    .creation-hero::before {
+      content:'';
+      position:absolute; top:10%; left:6%;
+      width:1px; bottom:10%;
+      background:linear-gradient(to bottom,
+        transparent, var(--border2) 30%, var(--border2) 70%, transparent);
+    }
+    .creation-hero-deco {
+      position:absolute;
+      right:-2%; bottom:-10%;
+      font-family:var(--serif);
+      font-size:22rem; font-weight:300; font-style:italic;
+      color:rgba(196,168,130,.04);
+      user-select:none; pointer-events:none; line-height:1;
+    }
+    .creation-hero-inner {
+      max-width:1160px; margin:0 auto; padding:0 48px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:flex-end;
+      gap:48px;
+    }
+    .creation-hero-meta {
+      display:flex;
+      align-items:center;
+      gap:28px;
+      flex-shrink:0;
+    }
+    .creation-meta-item { text-align:right }
+    .creation-meta-num {
+      font-family:var(--serif);
+      font-size:2.2rem; font-weight:300; font-style:italic;
+      color:var(--sand2); line-height:1;
+    }
+    .creation-meta-label {
+      font-size:.52rem; font-weight:700;
+      letter-spacing:2px; text-transform:uppercase;
+      color:var(--ink4); margin-top:4px;
+    }
+    .creation-meta-sep {
+      width:1px; height:48px; background:var(--border);
     }
 
-    /* Fond : grand texte fantôme */
-    .writing-hero-bg {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      user-select: none;
-      overflow: hidden;
+    /* ── Nav poèmes sticky ─────────────────── */
+    .poems-nav {
+      position:sticky; top:64px; z-index:80;
+      background:rgba(245,242,237,.96);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+      overflow-x:auto; scrollbar-width:none;
     }
-    .writing-hero-bg span {
-      font-family: var(--serif);
-      font-size: clamp(14rem, 28vw, 32rem);
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(255,255,255,.03);
-      white-space: nowrap;
-      letter-spacing: -8px;
-      line-height: 1;
-      animation: driftSlow 18s ease-in-out infinite alternate;
+    .poems-nav::-webkit-scrollbar { display:none }
+    .poems-nav-inner {
+      max-width:1160px; margin:0 auto; padding:0 48px;
+      display:flex; gap:0; min-width:max-content;
     }
-    @keyframes driftSlow {
-      from { transform: translateX(-3%) translateY(2%) }
-      to   { transform: translateX(3%) translateY(-2%) }
+    .poem-nav-link {
+      font-size:.6rem; font-weight:600;
+      letter-spacing:1.5px; text-transform:uppercase;
+      color:var(--ink4);
+      padding:14px 18px;
+      border-bottom:1.5px solid transparent;
+      transition:color .2s, border-color .2s;
+      white-space:nowrap; text-decoration:none;
+      display:flex; align-items:center; gap:8px;
     }
-
-    /* Particules / étoiles CSS */
-    .stars {
-      position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+    .poem-nav-num {
+      font-family:var(--serif); font-style:italic;
+      font-size:.78rem; color:var(--border2);
     }
-    .star {
-      position: absolute;
-      width: 1.5px; height: 1.5px;
-      background: rgba(196,168,130,.5);
-      border-radius: 50%;
-      animation: twinkle var(--d, 3s) ease-in-out var(--delay, 0s) infinite alternate;
-    }
-    @keyframes twinkle {
-      from { opacity: .1; transform: scale(.8) }
-      to   { opacity: .9; transform: scale(1.4) }
+    .poem-nav-link:hover,.poem-nav-link.active {
+      color:var(--sand2); border-bottom-color:var(--sand2);
     }
 
-    /* Ligne dorée verticale à gauche */
-    .writing-hero::before {
-      content: '';
-      position: absolute;
-      top: 12%; bottom: 12%; left: 8%;
-      width: 1px;
-      background: linear-gradient(to bottom,
-        transparent, rgba(196,168,130,.4) 30%,
-        rgba(196,168,130,.4) 70%, transparent);
+    /* ── Stats ─────────────────────────────── */
+    .creation-intro { background:var(--white); border-bottom:1px solid var(--border) }
+    .creation-intro-inner {
+      max-width:1160px; margin:0 auto; padding:0 48px;
+      display:grid; grid-template-columns:repeat(4,1fr);
+    }
+    .creation-stat {
+      padding:36px 32px;
+      border-right:1px solid var(--border);
+    }
+    .creation-stat:last-child { border-right:none }
+    .creation-stat-icon {
+      width:36px; height:36px;
+      background:var(--sand-bg); border:1px solid var(--sand-bdr);
+      border-radius:var(--r);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--sand2); font-size:.82rem; margin-bottom:16px;
+    }
+    .creation-stat-num {
+      font-family:var(--serif);
+      font-size:2rem; font-weight:300; font-style:italic;
+      color:var(--ink); line-height:1; margin-bottom:6px;
+    }
+    .creation-stat-label {
+      font-size:.7rem; font-weight:500; color:var(--ink3); line-height:1.5;
+    }
+    .creation-stat-label strong {
+      display:block; font-size:.54rem; font-weight:700;
+      letter-spacing:1.5px; text-transform:uppercase;
+      color:var(--ink4); margin-bottom:3px;
     }
 
-    /* Contenu hero */
-    .writing-hero-content {
-      position: relative;
-      z-index: 5;
-      padding: 0 8% 0 calc(8% + 24px);
-    }
-    .writing-hero-eyebrow {
-      display: flex; align-items: center; gap: 12px;
-      font-size: .58rem; font-weight: 600; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--sand);
-      margin-bottom: 20px;
-    }
-    .writing-hero-eyebrow::before {
-      content: ''; width: 28px; height: 1px;
-      background: var(--sand); flex-shrink: 0;
-    }
-    .writing-hero-title {
-      font-family: var(--serif);
-      font-size: clamp(4rem, 9vw, 10rem);
-      font-weight: 300;
-      color: rgba(255,255,255,.92);
-      line-height: .9;
-      letter-spacing: -2px;
-      margin-bottom: 0;
-    }
-    .writing-hero-title em {
-      font-style: italic;
-      color: var(--sand2);
-      display: block;
-    }
-    .writing-hero-sub {
-      margin-top: 28px;
-      font-family: var(--serif);
-      font-size: 1.05rem;
-      font-style: italic;
-      color: rgba(255,255,255,.35);
-      max-width: 480px;
-      line-height: 1.8;
-    }
-    .writing-hero-meta {
-      margin-top: 36px;
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-    .writing-hero-count {
-      font-family: var(--serif);
-      font-size: 2.4rem;
-      font-weight: 300;
-      color: var(--sand2);
-      line-height: 1;
-    }
-    .writing-hero-count-label {
-      font-size: .54rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.25);
-      margin-top: 4px;
-    }
-    .writing-hero-sep-v {
-      width: 1px; height: 40px;
-      background: rgba(255,255,255,.1);
-    }
-    .writing-hero-quote {
-      font-family: var(--serif);
-      font-size: .88rem;
-      font-style: italic;
-      color: rgba(255,255,255,.3);
-      max-width: 280px;
-      line-height: 1.7;
-    }
+    /* ── Blocs poèmes ──────────────────────── */
+    .poems-wrap { background:var(--cream) }
 
-    /* Scroll down indicator */
-    .writing-scroll {
-      position: absolute;
-      bottom: 32px; right: 8%;
-      display: flex; align-items: center; gap: 10px;
-      font-size: .52rem; font-weight: 600;
-      letter-spacing: 2.5px; text-transform: uppercase;
-      color: rgba(255,255,255,.2);
-      writing-mode: vertical-rl;
-      z-index: 5;
-    }
-    .writing-scroll::before {
-      content: '';
-      width: 1px; height: 40px;
-      background: linear-gradient(to bottom, transparent, rgba(196,168,130,.5));
-      display: block;
-    }
-
-    /* ── Index des poèmes ──────────────────── */
-    .poems-index {
-      background: var(--ink);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      padding: 0 8%;
-      position: sticky;
-      top: 64px;
-      z-index: 50;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .poems-index::-webkit-scrollbar { display: none }
-    .poems-index-inner {
-      display: flex;
-      gap: 0;
-      min-width: max-content;
-    }
-    .poem-index-link {
-      font-size: .6rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.2);
-      padding: 16px 20px;
-      border-bottom: 1.5px solid transparent;
-      transition: color .2s, border-color .2s;
-      white-space: nowrap;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .poem-index-link:hover,
-    .poem-index-link.active {
-      color: var(--sand2);
-      border-bottom-color: var(--sand2);
-    }
-    .poem-index-num {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: .75rem;
-      color: rgba(255,255,255,.1);
-    }
-
-    /* ── Section poèmes ────────────────────── */
-    .poems-section {
-      background: var(--ink);
-      padding: 0;
-    }
-
-    /* ── Poem card ─────────────────────────── */
     .poem-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 100vh;
-      border-top: 1px solid rgba(255,255,255,.05);
-      position: relative;
-      overflow: hidden;
+      display:grid; grid-template-columns:1fr 1fr;
+      border-bottom:1px solid var(--border);
+      min-height:520px;
+      transition:box-shadow .3s;
     }
-    /* Alternance gauche/droite */
-    .poem-block:nth-child(even) .poem-block-visual { order: 2 }
-    .poem-block:nth-child(even) .poem-block-text   { order: 1 }
+    .poem-block:hover { box-shadow:0 4px 32px rgba(0,0,0,.06) }
+
+    .poem-block:nth-child(even) .poem-visual { order:2 }
+    .poem-block:nth-child(even) .poem-text-panel { order:1 }
 
     /* Panneau visuel */
-    .poem-block-visual {
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .poem-visual {
+      position:relative; overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+      background:var(--cream2);
     }
-    .poem-visual-bg {
-      position: absolute; inset: 0;
-      transition: transform 1.2s cubic-bezier(.22,1,.36,1);
+    .poem-visual-inner {
+      position:absolute; inset:0;
+      transition:transform 1s cubic-bezier(.22,1,.36,1);
     }
-    .poem-block:hover .poem-visual-bg {
-      transform: scale(1.04);
-    }
-    /* Thèmes visuels par poème */
-    .poem-block[data-theme="aimer"] .poem-visual-bg {
+    .poem-block:hover .poem-visual-inner { transform:scale(1.04) }
+
+    [data-theme="aimer"] .poem-visual-inner {
       background:
-        radial-gradient(ellipse at 30% 60%, rgba(184,149,110,.25) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 20%, rgba(150,110,80,.15) 0%, transparent 45%),
-        linear-gradient(145deg, #1a1510 0%, #0f0c09 60%, #1a1510 100%);
+        radial-gradient(ellipse at 35% 65%, rgba(196,168,130,.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 25%, rgba(184,149,110,.2) 0%, transparent 40%),
+        var(--cream3);
     }
-    .poem-block[data-theme="alcoolisme"] .poem-visual-bg {
+    [data-theme="alcoolisme"] .poem-visual-inner {
       background:
-        radial-gradient(ellipse at 60% 80%, rgba(60,40,30,.8) 0%, transparent 50%),
-        radial-gradient(ellipse at 20% 20%, rgba(100,60,30,.2) 0%, transparent 40%),
-        linear-gradient(160deg, #0d0a08 0%, #1a1005 50%, #0a0807 100%);
+        radial-gradient(ellipse at 50% 80%, rgba(120,100,80,.25) 0%, transparent 50%),
+        linear-gradient(160deg, var(--cream3) 0%, #ddd5c8 100%);
     }
-    .poem-block[data-theme="sauveur"] .poem-visual-bg {
+    [data-theme="sauveur"] .poem-visual-inner {
       background:
-        radial-gradient(ellipse at 50% 40%, rgba(196,168,130,.12) 0%, transparent 60%),
-        radial-gradient(ellipse at 90% 90%, rgba(120,80,50,.2) 0%, transparent 40%),
-        linear-gradient(135deg, #12100e 0%, #1c1510 50%, #0e0c0a 100%);
+        radial-gradient(ellipse at 40% 40%, rgba(196,168,130,.3) 0%, transparent 60%),
+        linear-gradient(140deg, var(--cream2) 0%, var(--cream3) 100%);
     }
-    .poem-block[data-theme="fleur"] .poem-visual-bg {
+    [data-theme="fleur"] .poem-visual-inner {
       background:
-        radial-gradient(ellipse at 40% 30%, rgba(184,149,110,.2) 0%, transparent 55%),
-        radial-gradient(ellipse at 70% 80%, rgba(150,100,70,.15) 0%, transparent 40%),
-        linear-gradient(150deg, #111009 0%, #1a160e 60%, #0c0a07 100%);
+        radial-gradient(ellipse at 60% 30%, rgba(196,168,130,.28) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(184,149,110,.15) 0%, transparent 40%),
+        var(--cream3);
     }
-    .poem-block[data-theme="reciprocite"] .poem-visual-bg {
+    [data-theme="reciprocite"] .poem-visual-inner {
       background:
-        radial-gradient(ellipse at 20% 70%, rgba(80,60,40,.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(196,168,130,.08) 0%, transparent 45%),
-        linear-gradient(170deg, #0a0807 0%, #141210 60%, #0e0c09 100%);
+        radial-gradient(ellipse at 30% 70%, rgba(150,120,90,.2) 0%, transparent 50%),
+        linear-gradient(150deg, var(--cream2) 0%, #e0d9d0 100%);
     }
-    .poem-block[data-theme="alchimie"] .poem-visual-bg {
+    [data-theme="alchimie"] .poem-visual-inner {
       background:
-        radial-gradient(ellipse at 50% 50%, rgba(184,149,110,.18) 0%, transparent 60%),
-        radial-gradient(ellipse at 10% 90%, rgba(100,70,40,.2) 0%, transparent 40%),
-        linear-gradient(140deg, #0f0d0b 0%, #1e1812 60%, #0a0907 100%);
+        radial-gradient(ellipse at 50% 50%, rgba(196,168,130,.32) 0%, transparent 60%),
+        linear-gradient(135deg, var(--cream3) 0%, var(--cream2) 100%);
     }
 
-    /* Numéro grand décoratif */
     .poem-visual-num {
-      font-family: var(--serif);
-      font-size: clamp(12rem, 22vw, 22rem);
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(255,255,255,.025);
-      line-height: 1;
-      user-select: none;
-      position: relative;
-      z-index: 2;
-      transition: color .6s ease, transform .8s cubic-bezier(.22,1,.36,1);
+      font-family:var(--serif);
+      font-size:clamp(10rem,18vw,18rem);
+      font-weight:300; font-style:italic;
+      color:rgba(196,168,130,.12);
+      line-height:1; user-select:none;
+      position:relative; z-index:2;
+      transition:color .5s, transform .8s cubic-bezier(.22,1,.36,1);
     }
     .poem-block:hover .poem-visual-num {
-      color: rgba(196,168,130,.06);
-      transform: scale(1.05) translateY(-4%);
+      color:rgba(196,168,130,.22);
+      transform:scale(1.05) translateY(-3%);
     }
-
-    /* Icône / symbole centré */
+    .poem-visual-badge {
+      position:absolute; top:20px; left:20px;
+      font-size:.52rem; font-weight:700; letter-spacing:1.5px;
+      text-transform:uppercase;
+      background:var(--ink); color:#fff;
+      padding:5px 11px; border-radius:2px; z-index:4;
+    }
     .poem-visual-icon {
-      position: absolute;
-      z-index: 3;
-      font-family: var(--serif);
-      font-size: 1.8rem;
-      font-style: italic;
-      color: rgba(196,168,130,.25);
-      bottom: 48px;
-      left: 48px;
-      letter-spacing: 2px;
-      transition: color .4s, transform .4s;
+      position:absolute; bottom:28px; right:28px;
+      font-family:var(--serif); font-size:1.6rem; font-style:italic;
+      color:var(--sand2); opacity:.35; z-index:4;
+      transition:opacity .3s, transform .3s;
     }
-    .poem-block:hover .poem-visual-icon {
-      color: rgba(196,168,130,.5);
-      transform: translateY(-4px);
-    }
+    .poem-block:hover .poem-visual-icon { opacity:.7; transform:translateY(-4px) }
 
-    /* Ligne verticale droite du panneau visuel */
-    .poem-block:nth-child(odd) .poem-block-visual::after,
-    .poem-block:nth-child(even) .poem-block-visual::before {
-      content: '';
-      position: absolute;
-      top: 15%; bottom: 15%; right: 0;
-      width: 1px;
-      background: linear-gradient(to bottom,
-        transparent, rgba(196,168,130,.15) 30%,
-        rgba(196,168,130,.15) 70%, transparent);
+    .poem-block:nth-child(odd) .poem-visual::after {
+      content:'';
+      position:absolute; top:15%; right:0; bottom:15%;
+      width:1px;
+      background:linear-gradient(to bottom,
+        transparent, var(--border2) 30%, var(--border2) 70%, transparent);
+      z-index:3;
     }
-    .poem-block:nth-child(even) .poem-block-visual::before { left:0; right:auto }
-
-    /* Tag thématique */
-    .poem-visual-tag {
-      position: absolute;
-      top: 28px; right: 28px;
-      font-size: .5rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(196,168,130,.5);
-      background: rgba(196,168,130,.06);
-      border: 1px solid rgba(196,168,130,.12);
-      padding: 6px 12px;
-      border-radius: 2px;
-      z-index: 4;
+    .poem-block:nth-child(even) .poem-visual::after {
+      content:'';
+      position:absolute; top:15%; left:0; bottom:15%;
+      width:1px;
+      background:linear-gradient(to bottom,
+        transparent, var(--border2) 30%, var(--border2) 70%, transparent);
+      z-index:3;
     }
 
     /* Panneau texte */
-    .poem-block-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 80px 72px;
-      position: relative;
+    .poem-text-panel {
+      display:flex; flex-direction:column; justify-content:center;
+      padding:64px 60px;
+      background:var(--white);
+      border-left:1px solid var(--border);
+    }
+    .poem-block:nth-child(even) .poem-text-panel {
+      border-left:none; border-right:1px solid var(--border);
     }
 
-    .poem-num-label {
-      font-size: .54rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--sand2);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      opacity: .7;
+    .poem-eyebrow {
+      font-size:.56rem; font-weight:700;
+      letter-spacing:2.5px; text-transform:uppercase; color:var(--sand2);
+      display:flex; align-items:center; gap:10px; margin-bottom:18px;
     }
-    .poem-num-label::before {
-      content: ''; width: 20px; height: 1px;
-      background: var(--sand2); flex-shrink: 0;
+    .poem-eyebrow::before {
+      content:''; width:18px; height:1px; background:var(--sand2); flex-shrink:0;
     }
-
     .poem-title {
-      font-family: var(--serif);
-      font-size: clamp(2.4rem, 4vw, 4rem);
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(255,255,255,.9);
-      line-height: 1.05;
-      letter-spacing: -.5px;
-      margin-bottom: 36px;
-      position: relative;
+      font-family:var(--serif);
+      font-size:clamp(2rem,3.5vw,3.2rem);
+      font-weight:300; font-style:italic;
+      color:var(--ink); line-height:1.05;
+      letter-spacing:-.3px; margin-bottom:28px;
     }
     .poem-title::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 1.5px;
-      background: linear-gradient(to right, var(--sand2), transparent);
-      margin-top: 18px;
+      content:''; display:block;
+      width:36px; height:1.5px;
+      background:linear-gradient(to right, var(--sand2), transparent);
+      margin-top:16px;
     }
-
-    .poem-text {
-      font-family: var(--serif);
-      font-size: clamp(.88rem, 1.1vw, 1rem);
-      font-style: italic;
-      color: rgba(255,255,255,.45);
-      line-height: 2.1;
-      letter-spacing: .01em;
-      position: relative;
+    .poem-body {
+      font-family:var(--serif); font-size:.92rem;
+      font-style:italic; color:var(--ink3); line-height:2.05;
     }
-    .poem-text p {
-      margin-bottom: 1.6em;
-    }
-    .poem-text p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Vers mis en valeur (premier vers de chaque strophe) */
-    .poem-text .verse-first {
-      color: rgba(255,255,255,.75);
-    }
-
-    /* Citation mise en avant */
+    .poem-body p { margin-bottom:1.4em }
+    .poem-body p:last-child { margin-bottom:0 }
+    .verse-accent { color:var(--ink2) }
     .poem-pull {
-      margin: 28px 0;
-      padding: 20px 24px;
-      border-left: 2px solid rgba(196,168,130,.3);
-      font-family: var(--serif);
-      font-size: 1.15rem;
-      font-style: italic;
-      color: rgba(196,168,130,.6);
-      line-height: 1.65;
-      background: rgba(196,168,130,.03);
-      border-radius: 0 2px 2px 0;
+      margin:20px 0; padding:16px 20px;
+      border-left:2px solid var(--sand);
+      background:var(--sand-bg);
+      border-radius:0 var(--r) var(--r) 0;
+      font-family:var(--serif); font-size:1rem;
+      font-style:italic; color:var(--ink2); line-height:1.7;
     }
-
-    /* Signature bas de poème */
     .poem-footer {
-      margin-top: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,.06);
+      margin-top:32px; padding-top:20px;
+      border-top:1px solid var(--border);
+      display:flex; align-items:center; justify-content:space-between;
     }
-    .poem-author {
-      font-family: var(--serif);
-      font-size: .78rem;
-      font-style: italic;
-      color: rgba(255,255,255,.2);
-    }
+    .poem-author { font-family:var(--serif); font-size:.75rem; font-style:italic; color:var(--ink4) }
     .poem-year {
-      font-size: .54rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      color: rgba(255,255,255,.1);
-      font-family: monospace;
+      font-size:.54rem; font-weight:600; letter-spacing:2px;
+      color:var(--border2); font-family:monospace;
+      background:var(--cream); border:1px solid var(--border);
+      padding:3px 8px; border-radius:2px;
     }
-
-    /* ── Section intro / présentation ─────── */
-    .writing-intro {
-      background: var(--ink);
-      padding: 120px 8%;
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 80px;
-      align-items: center;
-      border-top: 1px solid rgba(255,255,255,.05);
-    }
-    .writing-intro-left {
-      position: sticky;
-      top: 120px;
-    }
-    .writing-intro-eyebrow {
-      font-size: .58rem; font-weight: 600;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--sand2);
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 18px;
-    }
-    .writing-intro-eyebrow::before {
-      content: ''; width: 20px; height: 1px;
-      background: var(--sand2);
-    }
-    .writing-intro-title {
-      font-family: var(--serif);
-      font-size: clamp(2.8rem, 4.5vw, 5rem);
-      font-weight: 300;
-      color: rgba(255,255,255,.88);
-      line-height: .95;
-      letter-spacing: -.5px;
-    }
-    .writing-intro-title em {
-      font-style: italic;
-      color: var(--sand2);
-      display: block;
-    }
-    .writing-intro-body {
-      font-family: var(--serif);
-      font-size: 1.05rem;
-      font-style: italic;
-      color: rgba(255,255,255,.3);
-      line-height: 1.9;
-      margin-top: 24px;
-      max-width: 360px;
-    }
-
-    .writing-intro-right {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .writing-stat {
-      display: flex;
-      align-items: flex-start;
-      gap: 24px;
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(255,255,255,.05);
-    }
-    .writing-stat:first-child { border-top: 1px solid rgba(255,255,255,.05) }
-    .writing-stat-num {
-      font-family: var(--serif);
-      font-size: 2.8rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--sand2);
-      line-height: 1;
-      flex-shrink: 0;
-      min-width: 80px;
-    }
-    .writing-stat-label {
-      font-size: .72rem;
-      font-weight: 500;
-      color: rgba(255,255,255,.55);
-      line-height: 1.65;
-      margin-top: 6px;
-    }
-    .writing-stat-label strong {
-      display: block;
-      font-size: .58rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.2);
-      margin-bottom: 4px;
-    }
-
-    /* ── Footer section ────────────────────── */
-    .writing-end {
-      background: var(--ink);
-      padding: 100px 8% 120px;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,.05);
-      position: relative;
-      overflow: hidden;
-    }
-    .writing-end::before {
-      content: '✦';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 30rem;
-      color: rgba(255,255,255,.012);
-      font-family: var(--serif);
-      pointer-events: none;
-      user-select: none;
-    }
-    .writing-end-title {
-      font-family: var(--serif);
-      font-size: clamp(2.5rem, 5vw, 5.5rem);
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(255,255,255,.15);
-      line-height: 1;
-      letter-spacing: -1px;
-      margin-bottom: 36px;
-    }
-    .writing-end-title em { color: var(--sand2); opacity: .6 }
-    .writing-end-links {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    /* ── Reveal animations ─────────────────── */
-    .poem-block-text { opacity: 0; transform: translateY(32px) }
-    .poem-block-text.in { opacity: 1; transform: none; transition: opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1) }
-    .poem-block-visual { opacity: 0 }
-    .poem-block-visual.in { opacity: 1; transition: opacity 1.2s ease }
-    .writing-intro-left { opacity: 0; transform: translateY(24px) }
-    .writing-intro-left.in { opacity: 1; transform: none; transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1) }
-    .writing-stat { opacity: 0; transform: translateX(20px) }
-    .writing-stat.in { opacity: 1; transform: none; transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1) }
 
     /* ── Responsive ─────────────────────────── */
-    @media (max-width: 900px) {
-      .poem-block {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-      .poem-block-visual { min-height: 280px; order: 1 !important }
-      .poem-block-text   { order: 2 !important; padding: 52px 32px }
-      .poem-block:nth-child(odd) .poem-block-visual::after,
-      .poem-block:nth-child(even) .poem-block-visual::before { display: none }
-      .writing-intro { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px }
-      .writing-intro-left { position: static }
-      .writing-end { padding: 72px 24px 80px }
-      .writing-hero-content { padding: 0 24px }
-      .writing-hero::before { left: 24px }
-      .poems-index { padding: 0 24px }
+    @media (max-width:900px) {
+      .poem-block { grid-template-columns:1fr; min-height:auto }
+      .poem-visual { min-height:260px; order:1 !important }
+      .poem-text-panel { order:2 !important; padding:40px 28px; border-left:none !important; border-right:none !important; border-top:1px solid var(--border) }
+      .poem-visual::after { display:none !important }
+      .creation-intro-inner { grid-template-columns:1fr 1fr }
+      .creation-stat:nth-child(2) { border-right:none }
+      .creation-stat:nth-child(3) { border-top:1px solid var(--border) }
+      .creation-stat:nth-child(4) { border-top:1px solid var(--border); border-right:none }
+      .creation-hero-inner { grid-template-columns:1fr; padding:0 24px }
     }
-    @media (max-width: 600px) {
-      .poem-block-text { padding: 40px 20px }
-      .writing-hero-title { letter-spacing: -1px }
+    @media (max-width:600px) {
+      .poems-nav-inner,.creation-intro-inner { padding:0 20px }
+      .creation-intro-inner { grid-template-columns:1fr }
+      .creation-stat { border-right:none !important; border-bottom:1px solid var(--border) }
+      .poem-text-panel { padding:32px 20px }
     }
   </style>
 </head>
-<body style="background:var(--ink)">
+<body>
 
-<!-- ═══════════════════════════════════════════════
-     NAV
-═══════════════════════════════════════════════ -->
-<nav class="nav scrolled" id="nav" style="background:rgba(28,25,23,.96);border-bottom-color:rgba(255,255,255,.07)">
+<nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand" style="color:rgba(255,255,255,.8)">Elisa <em>Huart-Vasak</em></a>
+    <a href="index.html" class="nav-brand">Elisa <em>Huart-Vasak</em></a>
     <ul class="nav-links">
-      <li><a href="index.html#about" style="color:rgba(255,255,255,.35)">À propos</a></li>
-      <li><a href="cv.html" style="color:rgba(255,255,255,.35)">CV</a></li>
-      <li><a href="missions.html" style="color:rgba(255,255,255,.35)">Missions</a></li>
-      <li><a href="creation.html" style="color:var(--sand2)" class="active">Écriture</a></li>
-      <li><a href="devoirs.html" style="color:rgba(255,255,255,.35)">Travaux</a></li>
+      <li><a href="index.html#about">À propos</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="creation.html" class="active">Écriture</a></li>
+      <li><a href="devoirs.html">Travaux</a></li>
       <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
     </ul>
-    <button class="burger" id="burger" aria-label="Menu"><span style="background:rgba(255,255,255,.6)"></span><span style="background:rgba(255,255,255,.6)"></span></button>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- Barre de progression -->
-<div id="read-progress" style="position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,var(--sand),var(--sand2));z-index:9999;width:0%;transition:width .08s linear;pointer-events:none"></div>
+<div id="read-progress" style="position:fixed;top:0;left:0;height:2.5px;background:linear-gradient(to right,var(--sand),var(--sand2));z-index:9999;width:0%;transition:width .08s linear;pointer-events:none"></div>
 
-<!-- ═══════════════════════════════════════════════
-     HERO
-═══════════════════════════════════════════════ -->
-<section class="writing-hero">
-  <div class="writing-hero-bg">
-    <span>Écriture</span>
-  </div>
-
-  <!-- Étoiles générées en JS -->
-  <div class="stars" id="stars"></div>
-
-  <div class="writing-scroll">Scroll</div>
-
-  <div class="writing-hero-content">
-    <p class="writing-hero-eyebrow">Poésie &middot; Création littéraire</p>
-    <h1 class="writing-hero-title">
-      Mots
-      <em>& émotions</em>
-    </h1>
-    <p class="writing-hero-sub">
-      Des poèmes nés de l'intime — l'amour, la perte, le sauvetage des autres, l'alchimie des rencontres. Chaque vers, une trace.
-    </p>
-    <div class="writing-hero-meta">
-      <div>
-        <div class="writing-hero-count">06</div>
-        <div class="writing-hero-count-label">Poèmes</div>
-      </div>
-      <div class="writing-hero-sep-v"></div>
-      <p class="writing-hero-quote">
-        &laquo;&nbsp;Écrire, c'est apprendre à laisser s'élever des étoiles fragiles dans un ciel voilé.&nbsp;&raquo;
+<!-- HERO -->
+<section class="creation-hero">
+  <div class="creation-hero-deco">É</div>
+  <div class="creation-hero-inner">
+    <div>
+      <p class="eyebrow">Poèmes &middot; Émotions</p>
+      <h1 class="h1-page">Écriture<br><em>& création</em></h1>
+      <p class="body-lg" style="margin-top:18px;max-width:480px">
+        Des vers nés de l'intime — l'amour, la perte, le sacrifice, les rencontres qui changent tout.
       </p>
     </div>
+    <div class="creation-hero-meta">
+      <div class="creation-meta-item">
+        <div class="creation-meta-num">06</div>
+        <div class="creation-meta-label">Poèmes</div>
+      </div>
+      <div class="creation-meta-sep"></div>
+      <div class="creation-meta-item">
+        <div class="creation-meta-num">∞</div>
+        <div class="creation-meta-label">Émotions</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     INDEX DES POÈMES (sticky)
-═══════════════════════════════════════════════ -->
-<nav class="poems-index" id="poems-index">
-  <div class="poems-index-inner">
-    <a href="#poem-aimer"       class="poem-index-link"><span class="poem-index-num">01</span> Aimer</a>
-    <a href="#poem-alcoolisme"  class="poem-index-link"><span class="poem-index-num">02</span> L'alcoolisme</a>
-    <a href="#poem-sauveur"     class="poem-index-link"><span class="poem-index-num">03</span> Syndrome du sauveur</a>
-    <a href="#poem-fleur"       class="poem-index-link"><span class="poem-index-num">04</span> Une fleur éternelle</a>
-    <a href="#poem-reciprocite" class="poem-index-link"><span class="poem-index-num">05</span> La réciprocité</a>
-    <a href="#poem-alchimie"    class="poem-index-link"><span class="poem-index-num">06</span> Alchimie</a>
+<!-- NAV STICKY -->
+<nav class="poems-nav" id="poems-nav">
+  <div class="poems-nav-inner">
+    <a href="#poem-aimer"       class="poem-nav-link"><span class="poem-nav-num">01</span> Aimer</a>
+    <a href="#poem-alcoolisme"  class="poem-nav-link"><span class="poem-nav-num">02</span> L'alcoolisme</a>
+    <a href="#poem-sauveur"     class="poem-nav-link"><span class="poem-nav-num">03</span> Syndrome du sauveur</a>
+    <a href="#poem-fleur"       class="poem-nav-link"><span class="poem-nav-num">04</span> Une fleur éternelle</a>
+    <a href="#poem-reciprocite" class="poem-nav-link"><span class="poem-nav-num">05</span> La réciprocité</a>
+    <a href="#poem-alchimie"    class="poem-nav-link"><span class="poem-nav-num">06</span> Alchimie</a>
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════════
-     PRÉSENTATION
-═══════════════════════════════════════════════ -->
-<section class="writing-intro">
-  <div class="writing-intro-left">
-    <p class="writing-intro-eyebrow">À propos de l'écriture</p>
-    <h2 class="writing-intro-title">
-      L'intime<br>mis en
-      <em>lumière</em>
-    </h2>
-    <p class="writing-intro-body">
-      Écrire pour traverser. Ces poèmes explorent l'amour et ses nuances, la dépendance, le sacrifice de soi pour les autres, et les rencontres qui changent tout. Une voix sincère, sans filtre.
-    </p>
-  </div>
-  <div class="writing-intro-right">
-    <div class="writing-stat">
-      <div class="writing-stat-num">6</div>
-      <div class="writing-stat-label"><strong>Poèmes</strong>Recueil de textes personnels explorant émotions et expériences de vie.</div>
+<!-- STATS -->
+<div class="creation-intro">
+  <div class="creation-intro-inner">
+    <div class="creation-stat">
+      <div class="creation-stat-icon"><i class="fa-solid fa-feather"></i></div>
+      <div class="creation-stat-num">6</div>
+      <div class="creation-stat-label"><strong>Poèmes</strong>Textes personnels, vers libres</div>
     </div>
-    <div class="writing-stat">
-      <div class="writing-stat-num">∞</div>
-      <div class="writing-stat-label"><strong>Thèmes</strong>Amour, dépendance, sacrifice, alchimie — des univers émotionnels distincts.</div>
+    <div class="creation-stat">
+      <div class="creation-stat-icon"><i class="fa-solid fa-heart"></i></div>
+      <div class="creation-stat-num">Amour</div>
+      <div class="creation-stat-label"><strong>Thème central</strong>Et ses nuances profondes</div>
     </div>
-    <div class="writing-stat">
-      <div class="writing-stat-num">✦</div>
-      <div class="writing-stat-label"><strong>Style</strong>Prose poétique, vers libres, images stellaires et organiques mêlées.</div>
+    <div class="creation-stat">
+      <div class="creation-stat-icon"><i class="fa-solid fa-star"></i></div>
+      <div class="creation-stat-num">Étoiles</div>
+      <div class="creation-stat-label"><strong>Image récurrente</strong>Métaphore stellaire</div>
     </div>
-    <div class="writing-stat">
-      <div class="writing-stat-num">E</div>
-      <div class="writing-stat-label"><strong>Autrice</strong>Elisa Huart-Vasak — étudiante, créatrice, observatrice du monde.</div>
+    <div class="creation-stat">
+      <div class="creation-stat-icon"><i class="fa-solid fa-pen-nib"></i></div>
+      <div class="creation-stat-num">E.H.V</div>
+      <div class="creation-stat-label"><strong>Autrice</strong>Elisa Huart-Vasak, Paris</div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ═══════════════════════════════════════════════
-     POÈMES
-═══════════════════════════════════════════════ -->
-<section class="poems-section">
+<div class="divider"></div>
 
-  <!-- ── 01 · AIMER ──────────────────────── -->
-  <article class="poem-block" data-theme="aimer" id="poem-aimer">
-    <div class="poem-block-visual">
-      <div class="poem-visual-bg"></div>
+<!-- POÈMES -->
+<section class="poems-wrap">
+
+  <article class="poem-block" data-theme="aimer" id="poem-aimer" data-r="scale">
+    <div class="poem-visual">
+      <div class="poem-visual-inner"></div>
       <div class="poem-visual-num">01</div>
-      <div class="poem-visual-tag">Amour</div>
+      <div class="poem-visual-badge">Amour</div>
       <div class="poem-visual-icon">✦</div>
     </div>
-    <div class="poem-block-text">
-      <p class="poem-num-label">Poème 01</p>
+    <div class="poem-text-panel">
+      <p class="poem-eyebrow">Poème 01</p>
       <h2 class="poem-title">Aimer</h2>
-      <div class="poem-text">
-        <p>
-          <span class="verse-first">Ton cœur est un ciel où l'on se perd,</span><br>
-          Chaque battement, un éclat dans l'univers.<br>
-          Tu traces, dans l'ombre, des constellations,<br>
-          Des rêves étoilés, des âmes en fusion.
-        </p>
-        <p>
-          <span class="verse-first">Aimer avec toi, c'est danser sous l'azur,</span><br>
-          Un ballet d'étoiles sur un fil trop sûr,<br>
-          C'est boire la lumière à la source du ciel,<br>
-          Et t'offrir l'éclat d'un astre éternel.
-        </p>
-        <p>
-          <span class="verse-first">Tu es l'aube qui peint mes nuits d'argent,</span><br>
-          Le souffle stellaire des vents apaisants.<br>
-          Ton rire éclate comme un firmament,<br>
-          Illuminant l'ombre de mes tourments.
-        </p>
+      <div class="poem-body">
+        <p><span class="verse-accent">Ton cœur est un ciel où l'on se perd,</span><br>
+        Chaque battement, un éclat dans l'univers.<br>
+        Tu traces, dans l'ombre, des constellations,<br>
+        Des rêves étoilés, des âmes en fusion.</p>
+        <p>Aimer avec toi, c'est danser sous l'azur,<br>
+        Un ballet d'étoiles sur un fil trop sûr,<br>
+        C'est boire la lumière à la source du ciel,<br>
+        Et t'offrir l'éclat d'un astre éternel.</p>
+        <p>Tu es l'aube qui peint mes nuits d'argent,<br>
+        Le souffle stellaire des vents apaisants.<br>
+        Ton rire éclate comme un firmament,<br>
+        Illuminant l'ombre de mes tourments.</p>
         <div class="poem-pull">
           Aimer, c'est apprendre à laisser s'élever<br>
           Des étoiles fragiles dans un ciel voilé,<br>
           Ou des fleurs sauvages dans l'ombre semées,<br>
           Prêtes à éclore au moindre rayon doré.
         </div>
-        <p>
-          Alors si l'amour est une étoile filante,<br>
-          Tu seras toujours à mes yeux la plus éclatante.
-        </p>
+        <p>Alors si l'amour est une étoile filante,<br>
+        Tu seras toujours à mes yeux la plus éclatante.</p>
       </div>
       <div class="poem-footer">
         <span class="poem-author">Elisa Huart-Vasak</span>
@@ -775,43 +434,36 @@
     </div>
   </article>
 
-  <!-- ── 02 · L'ALCOOLISME ───────────────── -->
-  <article class="poem-block" data-theme="alcoolisme" id="poem-alcoolisme">
-    <div class="poem-block-visual">
-      <div class="poem-visual-bg"></div>
+  <article class="poem-block" data-theme="alcoolisme" id="poem-alcoolisme" data-r="scale">
+    <div class="poem-visual">
+      <div class="poem-visual-inner"></div>
       <div class="poem-visual-num">02</div>
-      <div class="poem-visual-tag">Douleur</div>
+      <div class="poem-visual-badge">Douleur</div>
       <div class="poem-visual-icon">◌</div>
     </div>
-    <div class="poem-block-text">
-      <p class="poem-num-label">Poème 02</p>
+    <div class="poem-text-panel">
+      <p class="poem-eyebrow">Poème 02</p>
       <h2 class="poem-title">L'alcoolisme</h2>
-      <div class="poem-text">
-        <p>
-          <span class="verse-first">Et un jour tu as refusé,</span><br>
-          refusé cette douleur,<br>
-          refusé d'être courageuse,<br>
-          et refusé cette souffrance que tu as niée<br>
-          au lieu de chercher à l'apaiser.
-        </p>
-        <p>
-          <span class="verse-first">Tu as dissimulé ce mal-être dans l'addiction,</span><br>
-          et je te vois maintenant chaque soir absorber ce flacon.<br>
-          C'est sans doute celui qui te connaît le mieux maintenant,<br>
-          et je me dis qu'au fond,<br>
-          tu préférais sûrement lui à tes propres enfants.
-        </p>
+      <div class="poem-body">
+        <p><span class="verse-accent">Et un jour tu as refusé,</span><br>
+        refusé cette douleur,<br>
+        refusé d'être courageuse,<br>
+        et refusé cette souffrance que tu as niée<br>
+        au lieu de chercher à l'apaiser.</p>
+        <p>Tu as dissimulé ce mal-être dans l'addiction,<br>
+        et je te vois maintenant chaque soir absorber ce flacon.<br>
+        C'est sans doute celui qui te connaît le mieux maintenant,<br>
+        et je me dis qu'au fond,<br>
+        tu préférais sûrement lui à tes propres enfants.</p>
         <div class="poem-pull">
           Tu buvais pour rendre ta vie fluide,<br>
           pour éteindre le feu de ta colère,<br>
           et noyer des émotions dont tu ne savais que faire.
         </div>
-        <p>
-          Petit à petit,<br>
-          il a participé à la destruction du lien qui nous reliait,<br><br>
-          malgré tous ces sacrifices que j'étais prête à faire<br>
-          pour te garder à mes côtés.
-        </p>
+        <p>Petit à petit, il a participé à la destruction<br>
+        du lien qui nous reliait,<br><br>
+        malgré tous ces sacrifices que j'étais prête à faire<br>
+        pour te garder à mes côtés.</p>
       </div>
       <div class="poem-footer">
         <span class="poem-author">Elisa Huart-Vasak</span>
@@ -820,44 +472,33 @@
     </div>
   </article>
 
-  <!-- ── 03 · SYNDROME DU SAUVEUR ────────── -->
-  <article class="poem-block" data-theme="sauveur" id="poem-sauveur">
-    <div class="poem-block-visual">
-      <div class="poem-visual-bg"></div>
+  <article class="poem-block" data-theme="sauveur" id="poem-sauveur" data-r="scale">
+    <div class="poem-visual">
+      <div class="poem-visual-inner"></div>
       <div class="poem-visual-num">03</div>
-      <div class="poem-visual-tag">Sacrifice</div>
+      <div class="poem-visual-badge">Sacrifice</div>
       <div class="poem-visual-icon">☽</div>
     </div>
-    <div class="poem-block-text">
-      <p class="poem-num-label">Poème 03</p>
+    <div class="poem-text-panel">
+      <p class="poem-eyebrow">Poème 03</p>
       <h2 class="poem-title">Syndrome<br>du sauveur</h2>
-      <div class="poem-text">
-        <p>
-          <span class="verse-first">Je la présente comme la fille de la lune.</span>
-        </p>
-        <p>
-          Celle qui scintille au milieu d'un gouffre rempli de souffrance,<br>
-          celle qui dans les livres vient sauver la vie du personnage principal.
-        </p>
-        <p>
-          Sa vie est un désastre mais son cœur un paradis.
-        </p>
+      <div class="poem-body">
+        <p><span class="verse-accent">Je la présente comme la fille de la lune.</span></p>
+        <p>Celle qui scintille au milieu d'un gouffre rempli de souffrance,<br>
+        celle qui dans les livres vient sauver la vie du personnage principal.<br>
+        Sa vie est un désastre mais son cœur un paradis.</p>
         <div class="poem-pull">
           Ils l'idolâtrent malgré sa souffrance qui vient consumer<br>
           petit à petit cette étincelle qui traîne en elle.<br>
           Car oui, elle souffre au quotidien<br>
           mais ne peut pas s'empêcher d'aider même les plus mesquins.
         </div>
-        <p>
-          Elle ne cessera jamais de s'impliquer pour les autres,<br>
-          elle veut créer à elle-même ce miracle d'apaiser les peines de chacun,<br>
-          de rallumer cette flamme éteinte dans leur cœur<br>
-          car elle aussi aurait adoré que la sienne ne s'éteigne pas.
-        </p>
-        <p>
-          Et la triste vérité, c'est qu'elle priorisera toujours le besoin des autres à sa santé,<br>
-          jusqu'à devenir qu'une pauvre poussière qui s'effacera avec le temps.
-        </p>
+        <p>Elle ne cessera jamais de s'impliquer pour les autres,<br>
+        elle veut créer à elle-même ce miracle d'apaiser les peines de chacun,<br>
+        de rallumer cette flamme éteinte dans leur cœur<br>
+        car elle aussi aurait adoré que la sienne ne s'éteigne pas.</p>
+        <p><span class="verse-accent">Et la triste vérité, c'est qu'elle priorisera toujours le besoin des autres à sa santé,<br>
+        jusqu'à devenir qu'une pauvre poussière qui s'effacera avec le temps.</span></p>
       </div>
       <div class="poem-footer">
         <span class="poem-author">Elisa Huart-Vasak</span>
@@ -866,43 +507,34 @@
     </div>
   </article>
 
-  <!-- ── 04 · UNE FLEUR ÉTERNELLE ────────── -->
-  <article class="poem-block" data-theme="fleur" id="poem-fleur">
-    <div class="poem-block-visual">
-      <div class="poem-visual-bg"></div>
+  <article class="poem-block" data-theme="fleur" id="poem-fleur" data-r="scale">
+    <div class="poem-visual">
+      <div class="poem-visual-inner"></div>
       <div class="poem-visual-num">04</div>
-      <div class="poem-visual-tag">Connexion</div>
+      <div class="poem-visual-badge">Connexion</div>
       <div class="poem-visual-icon">✿</div>
     </div>
-    <div class="poem-block-text">
-      <p class="poem-num-label">Poème 04</p>
+    <div class="poem-text-panel">
+      <p class="poem-eyebrow">Poème 04</p>
       <h2 class="poem-title">Une fleur<br>éternelle</h2>
-      <div class="poem-text">
-        <p>
-          <span class="verse-first">Cette connexion entre deux âmes, si</span><br>
-          inexplicable qu'elle en a l'air<br>
-          est pourtant bien réelle.
-        </p>
-        <p>
-          Parfois, tu rencontreras cette personne,<br>
-          qui te donnera l'envie de vivre.
-        </p>
-        <p>
-          Cette personne qui comblera tes joies, tes pleurs et tes rires,<br>
-          juste avec un regard.
-        </p>
+      <div class="poem-body">
+        <p><span class="verse-accent">Cette connexion entre deux âmes,<br>
+        si inexplicable qu'elle en a l'air,<br>
+        est pourtant bien réelle.</span></p>
+        <p>Parfois, tu rencontreras cette personne,<br>
+        qui te donnera l'envie de vivre.<br>
+        Cette personne qui comblera tes joies, tes pleurs et tes rires,<br>
+        juste avec un regard.</p>
         <div class="poem-pull">
           Et oui, cette vagabonde que j'étais,<br>
           trouve refuge auprès de cette petite étoile<br>
           qui illumine tes mauvais jours, avec la chaleur<br>
           de ses mots, jusqu'à en briser la froideur de ta carapace.
         </div>
-        <p>
-          Elle était comme la dernière pièce d'un puzzle,<br>
-          et c'était ainsi la pièce manquante à ma vie,<br>
-          celle qui te fera fleurir ton cœur à jamais,<br>
-          comme une rose éternelle préservant ses pétales &hearts;
-        </p>
+        <p>Elle était comme la dernière pièce d'un puzzle,<br>
+        et c'était ainsi la pièce manquante à ma vie,<br>
+        celle qui te fera fleurir ton cœur à jamais,<br>
+        comme une rose éternelle préservant ses pétales &hearts;</p>
       </div>
       <div class="poem-footer">
         <span class="poem-author">Elisa Huart-Vasak</span>
@@ -911,48 +543,34 @@
     </div>
   </article>
 
-  <!-- ── 05 · LA RÉCIPROCITÉ ─────────────── -->
-  <article class="poem-block" data-theme="reciprocite" id="poem-reciprocite">
-    <div class="poem-block-visual">
-      <div class="poem-visual-bg"></div>
+  <article class="poem-block" data-theme="reciprocite" id="poem-reciprocite" data-r="scale">
+    <div class="poem-visual">
+      <div class="poem-visual-inner"></div>
       <div class="poem-visual-num">05</div>
-      <div class="poem-visual-tag">Solitude</div>
+      <div class="poem-visual-badge">Solitude</div>
       <div class="poem-visual-icon">◦</div>
     </div>
-    <div class="poem-block-text">
-      <p class="poem-num-label">Poème 05</p>
+    <div class="poem-text-panel">
+      <p class="poem-eyebrow">Poème 05</p>
       <h2 class="poem-title">La réciprocité</h2>
-      <div class="poem-text">
-        <p>
-          <span class="verse-first">un sentiment fort n'est-ce pas ?</span><br>
-          ce sentiment d'être aimé à ta juste valeur,<br>
-          ce sentiment réconfortant dans les moments les plus sombres,<br>
-          mais pourtant ce sentiment qui devient de plus en plus rare de nos jours.
-        </p>
-        <p>
-          en effet, elle agit comme une étoile cherchant sa vagabonde<br>
-          dans les bras qui n'étaient pas les siens.
-        </p>
+      <div class="poem-body">
+        <p><span class="verse-accent">un sentiment fort n'est-ce pas ?</span><br>
+        ce sentiment d'être aimé à ta juste valeur,<br>
+        ce sentiment réconfortant dans les moments les plus sombres,<br>
+        mais pourtant ce sentiment qui devient de plus en plus rare de nos jours.</p>
+        <p>en effet, elle agit comme une étoile cherchant sa vagabonde<br>
+        dans les bras qui n'étaient pas les siens.</p>
         <div class="poem-pull">
-          mais cette petite étoile qui ne trouve pas d'épaule sur laquelle se reposer,<br>
-          s'affaiblit de jour en jour,<br>
+          mais cette petite étoile qui ne trouve pas d'épaule<br>
+          sur laquelle se reposer, s'affaiblit de jour en jour,<br>
           par le manque d'amour au quotidien.
         </div>
-        <p>
-          car malgré tous ces nuages recouvrant ce ciel noir qui s'étend durant la nuit<br>
-          elle reste là, à scintiller pour illuminer les tristes pensées de ses proches.
-        </p>
-        <p>
-          mais sa présence ne deviendra bientôt qu'une simple poussière,<br>
-          car elle n'avait personne sur qui se reposer.
-        </p>
-        <p>
-          et c'est pour ça qu'aujourd'hui, elle veut disparaître<br>
-          parce qu'elle ne se sent plus fière d'elle.
-        </p>
-        <p>
-          et oui, c'est triste la réciprocité, n'est-ce pas ?
-        </p>
+        <p>car malgré tous ces nuages recouvrant ce ciel noir<br>
+        qui s'étend durant la nuit,<br>
+        elle reste là, à scintiller pour illuminer les tristes pensées de ses proches.</p>
+        <p>et c'est pour ça qu'aujourd'hui, elle veut disparaître<br>
+        parce qu'elle ne se sent plus fière d'elle.<br><br>
+        <span class="verse-accent">et oui, c'est triste la réciprocité, n'est-ce pas ?</span></p>
       </div>
       <div class="poem-footer">
         <span class="poem-author">Elisa Huart-Vasak</span>
@@ -961,40 +579,33 @@
     </div>
   </article>
 
-  <!-- ── 06 · ALCHIMIE ───────────────────── -->
-  <article class="poem-block" data-theme="alchimie" id="poem-alchimie">
-    <div class="poem-block-visual">
-      <div class="poem-visual-bg"></div>
+  <article class="poem-block" data-theme="alchimie" id="poem-alchimie" data-r="scale">
+    <div class="poem-visual">
+      <div class="poem-visual-inner"></div>
       <div class="poem-visual-num">06</div>
-      <div class="poem-visual-tag">Rencontre</div>
+      <div class="poem-visual-badge">Rencontre</div>
       <div class="poem-visual-icon">⬡</div>
     </div>
-    <div class="poem-block-text">
-      <p class="poem-num-label">Poème 06</p>
+    <div class="poem-text-panel">
+      <p class="poem-eyebrow">Poème 06</p>
       <h2 class="poem-title">Alchimie</h2>
-      <div class="poem-text">
-        <p>
-          <span class="verse-first">Ce soir-là, j'étais ici,</span><br>
-          allongée sur un lit autour de quatre murs blancs,<br>
-          entendant le bruit sourd des infirmiers<br>
-          qui naviguaient entre chaque patient,<br>
-          j'étais submergée par la dure réalité des faits,<br>
-          mais tu es arrivé.
-        </p>
+      <div class="poem-body">
+        <p><span class="verse-accent">Ce soir-là, j'étais ici,</span><br>
+        allongée sur un lit autour de quatre murs blancs,<br>
+        entendant le bruit sourd des infirmiers<br>
+        qui naviguaient entre chaque patient,<br>
+        j'étais submergée par la dure réalité des faits,<br>
+        mais tu es arrivé.</p>
         <div class="poem-pull">
           Tu es arrivé comme dans ces films<br>
           où tu rencontres enfin ta destinée,<br>
           en venant compléter la pièce manquante du puzzle,<br>
           celle qui ferait de nouveau vibrer mon cœur.
         </div>
-        <p>
-          J'aimerais te prendre la main pendant des heures,<br>
-          divaguer jusqu'à t'emmener loin de tes peurs.
-        </p>
-        <p>
-          <span class="verse-first">Cette alchimie est arrivée d'une manière violente,</span><br>
-          mais c'était sûrement une évidence.
-        </p>
+        <p>J'aimerais te prendre la main pendant des heures,<br>
+        divaguer jusqu'à t'emmener loin de tes peurs.</p>
+        <p><span class="verse-accent">Cette alchimie est arrivée d'une manière violente,<br>
+        mais c'était sûrement une évidence.</span></p>
       </div>
       <div class="poem-footer">
         <span class="poem-author">Elisa Huart-Vasak</span>
@@ -1005,30 +616,27 @@
 
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     FIN
-═══════════════════════════════════════════════ -->
-<section class="writing-end">
-  <p class="writing-end-title">
-    &laquo;&nbsp;L'écriture est ma façon<br>
-    de <em>laisser des traces</em>&nbsp;&raquo;
-  </p>
-  <div class="writing-end-links">
-    <a href="index.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.4)">
-      <i class="fa-solid fa-house"></i> Accueil
-    </a>
-    <a href="missions.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.4)">
-      <i class="fa-solid fa-clapperboard"></i> Missions
-    </a>
-    <a href="index.html#contact" class="btn btn-dark">
-      <i class="fa-regular fa-envelope"></i> Contact
-    </a>
+<div class="divider"></div>
+
+<!-- FIN -->
+<section class="section section-cream2">
+  <div class="container">
+    <div class="section-hd" data-r="fade">
+      <div>
+        <p class="eyebrow">Navigation</p>
+        <h2 class="h2">Continuer<br><em>l'exploration</em></h2>
+      </div>
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap" data-r>
+      <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-house"></i> Accueil</a>
+      <a href="cv.html" class="btn btn-outline"><i class="fa-regular fa-file-pdf"></i> CV</a>
+      <a href="missions.html" class="btn btn-outline"><i class="fa-solid fa-clapperboard"></i> Missions</a>
+      <a href="devoirs.html" class="btn btn-outline"><i class="fa-solid fa-book"></i> Travaux</a>
+      <a href="index.html#contact" class="btn btn-dark"><i class="fa-regular fa-envelope"></i> Contact</a>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════ -->
 <footer class="footer">
   <div class="container footer-inner">
     <span class="footer-brand">Elisa Huart-Vasak</span>
@@ -1044,62 +652,31 @@
 </footer>
 
 <script>
-// ── Étoiles générées ─────────────────────────────
-const starsEl = document.getElementById('stars');
-for (let i = 0; i < 80; i++) {
-  const s = document.createElement('div');
-  s.className = 'star';
-  s.style.cssText = `
-    left:${Math.random()*100}%;
-    top:${Math.random()*100}%;
-    --d:${2 + Math.random()*4}s;
-    --delay:${Math.random()*5}s;
-    opacity:${.1 + Math.random()*.5};
-  `;
-  starsEl.appendChild(s);
-}
-
-// ── Read progress ────────────────────────────────
-const prog = document.getElementById('read-progress');
+const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
   const doc = document.documentElement;
-  prog.style.width = (window.scrollY / (doc.scrollHeight - doc.clientHeight) * 100) + '%';
+  document.getElementById('read-progress').style.width =
+    (window.scrollY / (doc.scrollHeight - doc.clientHeight) * 100) + '%';
 });
 
-// ── Intersection Observer pour reveals ───────────
 const io = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('in'), e.target.dataset.delay || 0);
-      io.unobserve(e.target);
-    }
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.poem-block-text, .poem-block-visual, .writing-intro-left').forEach(el => io.observe(el));
-
-// Stats avec délai décalé
-document.querySelectorAll('.writing-stat').forEach((el, i) => {
-  el.dataset.delay = i * 100;
-  io.observe(el);
+}, { threshold: 0.08 });
+document.querySelectorAll('[data-r]').forEach(el => {
+  el.classList.add('will-animate'); io.observe(el);
 });
 
-// ── Index actif au scroll ────────────────────────
 const sections = document.querySelectorAll('.poem-block[id]');
-const links = document.querySelectorAll('.poem-index-link');
-const stickyOffset = 130;
-
+const links = document.querySelectorAll('.poem-nav-link');
 window.addEventListener('scroll', () => {
   let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - stickyOffset) current = s.id;
-  });
-  links.forEach(l => {
-    l.classList.toggle('active', l.getAttribute('href') === '#' + current);
-  });
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id });
+  links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
 });
 
-// ── Burger ───────────────────────────────────────
 document.getElementById('burger').addEventListener('click', () => {
   document.querySelector('.nav-links').classList.toggle('open');
 });
