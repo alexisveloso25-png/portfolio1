@@ -152,28 +152,45 @@
     }
     .poem-block:hover .poem-visual-inner { transform:scale(1.04) }
 
+    /* Image réelle couvrant le panneau */
+    .poem-visual-img {
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      object-position:center top;
+      display:block;
+      z-index:1;
+      transition:transform 1s cubic-bezier(.22,1,.36,1);
+    }
+    .poem-block:hover .poem-visual-img { transform:scale(1.04) }
+
+    /* S'assurer que num/badge/icon passent au-dessus de l'image */
+    .poem-visual-num { z-index:3 }
+    .poem-visual-badge { z-index:4 }
+    .poem-visual-icon { z-index:4 }
+
     [data-theme="aimer"] .poem-visual-inner {
-      background-image:url('../assets/poeme1.jpeg');
+      background-image:url('assets/poeme1.jpeg');
       background-color:var(--cream3);
     }
     [data-theme="alcoolisme"] .poem-visual-inner {
-      background-image:url('../assets/poeme2.jpeg');
+      background-image:url('assets/poeme2.jpeg');
       background-color:var(--cream3);
     }
     [data-theme="sauveur"] .poem-visual-inner {
-      background-image:url('../assets/poeme3.jpeg');
+      background-image:url('assets/poeme3.jpeg');
       background-color:var(--cream2);
     }
     [data-theme="fleur"] .poem-visual-inner {
-      background-image:url('../assets/poeme4.jpeg');
+      background-image:url('assets/poeme4.jpeg');
       background-color:var(--cream3);
     }
     [data-theme="reciprocite"] .poem-visual-inner {
-      background-image:url('../assets/poeme5.jpeg');
+      background-image:url('assets/poeme5.jpeg');
       background-color:var(--cream2);
     }
     [data-theme="alchimie"] .poem-visual-inner {
-      background-image:url('../assets/poeme6.jpeg');
+      background-image:url('assets/poeme6.jpeg');
       background-color:var(--cream3);
     }
 
@@ -391,7 +408,7 @@
 
   <article class="poem-block" data-theme="aimer" id="poem-aimer" data-r="scale">
     <div class="poem-visual">
-      <div class="poem-visual-inner"></div>
+      <img class="poem-visual-img" src="assets/poeme1.jpeg" alt="">
       <div class="poem-visual-num">01</div>
       <div class="poem-visual-badge">Amour</div>
       <div class="poem-visual-icon">✦</div>
@@ -430,7 +447,7 @@
 
   <article class="poem-block" data-theme="alcoolisme" id="poem-alcoolisme" data-r="scale">
     <div class="poem-visual">
-      <div class="poem-visual-inner"></div>
+      <img class="poem-visual-img" src="assets/poeme2.jpeg" alt="">
       <div class="poem-visual-num">02</div>
       <div class="poem-visual-badge">Douleur</div>
       <div class="poem-visual-icon">◌</div>
@@ -468,7 +485,7 @@
 
   <article class="poem-block" data-theme="sauveur" id="poem-sauveur" data-r="scale">
     <div class="poem-visual">
-      <div class="poem-visual-inner"></div>
+      <img class="poem-visual-img" src="assets/poeme3.jpeg" alt="">
       <div class="poem-visual-num">03</div>
       <div class="poem-visual-badge">Sacrifice</div>
       <div class="poem-visual-icon">☽</div>
@@ -503,7 +520,7 @@
 
   <article class="poem-block" data-theme="fleur" id="poem-fleur" data-r="scale">
     <div class="poem-visual">
-      <div class="poem-visual-inner"></div>
+      <img class="poem-visual-img" src="assets/poeme4.jpeg" alt="">
       <div class="poem-visual-num">04</div>
       <div class="poem-visual-badge">Connexion</div>
       <div class="poem-visual-icon">✿</div>
@@ -539,7 +556,7 @@
 
   <article class="poem-block" data-theme="reciprocite" id="poem-reciprocite" data-r="scale">
     <div class="poem-visual">
-      <div class="poem-visual-inner"></div>
+      <img class="poem-visual-img" src="assets/poeme5.jpeg" alt="">
       <div class="poem-visual-num">05</div>
       <div class="poem-visual-badge">Solitude</div>
       <div class="poem-visual-icon">◦</div>
@@ -575,7 +592,7 @@
 
   <article class="poem-block" data-theme="alchimie" id="poem-alchimie" data-r="scale">
     <div class="poem-visual">
-      <div class="poem-visual-inner"></div>
+      <img class="poem-visual-img" src="assets/poeme6.jpeg" alt="">
       <div class="poem-visual-num">06</div>
       <div class="poem-visual-badge">Rencontre</div>
       <div class="poem-visual-icon">⬡</div>
