@@ -211,101 +211,60 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   min-height:600px;
   overflow:hidden;
   position:relative;
+  background:var(--cream);
 }
 
 .hero {
   height:100%;
   display:grid;
-  /* 2/3 texte | 1/3 image */
-  grid-template-columns:2fr 1fr;
+  /* image 55% | texte 45% */
+  grid-template-columns:55fr 45fr;
   grid-template-rows:1fr;
 }
 
-/* ── Gauche : texte (2/3) ─────────────────────── */
-.hero-left {
-  order:1;
-  background:var(--cream);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:64px 72px 0 8%;
-  gap:22px;
-  position:relative;
-  z-index:2;
-  /* fond texturé subtil */
-  background-image:
-    radial-gradient(circle at 80% 20%, rgba(196,168,130,.07) 0%, transparent 50%),
-    radial-gradient(circle at 10% 80%, rgba(196,168,130,.05) 0%, transparent 40%);
-}
-
-/* Ligne décorative droite */
-.hero-left::after {
-  content:'';
-  position:absolute; top:10%; right:0; bottom:10%;
-  width:1px;
-  background:linear-gradient(to bottom,
-    transparent, var(--border2) 25%,
-    var(--border2) 75%, transparent);
-  z-index:3;
-}
-
-/* Grand "E" décoratif */
-.hero-deco-num {
-  position:absolute;
-  bottom:-20px; left:-10px;
-  font-family:var(--serif);
-  font-size:22rem; font-weight:300; font-style:italic;
-  color:rgba(196,168,130,.04);
-  user-select:none; pointer-events:none; line-height:1;
-}
-
-/* ── Droite : image portfolio.png (1/3) ───────── */
+/* ── Gauche : image portfolio.png (55%) ───────── */
 .hero-img-right {
-  order:2;
+  order:1;
   position:relative;
   overflow:hidden;
-  background:linear-gradient(160deg, var(--cream3) 0%, var(--cream2) 60%, var(--cream) 100%);
+  background:var(--cream2);
 }
-
-/* Cercle lumineux derrière la photo */
-.hero-img-right::before {
-  content:'';
-  position:absolute; bottom:-10%; left:50%;
-  transform:translateX(-50%);
-  width:120%; padding-bottom:120%; border-radius:50%;
-  background:radial-gradient(ellipse,
-    rgba(196,168,130,.2) 0%, transparent 65%);
-  z-index:1;
-}
-
 .hero-img-right img {
   width:100%;
   height:100%;
   object-fit:cover;
   object-position:center top;
   display:block;
-  position:relative;
-  z-index:2;
   transition:transform .8s var(--ease);
 }
 .hero-wrapper:hover .hero-img-right img {
-  transform:scale(1.04) translateY(-6px);
+  transform:scale(1.03) translateY(-4px);
+}
+/* Séparateur vertical droit */
+.hero-img-right::after {
+  content:'';
+  position:absolute; top:15%; right:0; bottom:15%;
+  width:1px;
+  background:linear-gradient(to bottom,
+    transparent, var(--border2) 30%,
+    var(--border2) 70%, transparent);
+  z-index:3;
 }
 
 /* Badge & tag */
 .hero-badge {
-  position:absolute; bottom:22px; right:16px;
+  position:absolute; bottom:22px; right:22px;
   background:var(--ink); color:rgba(255,255,255,.82);
   font-size:.46rem; font-weight:700; letter-spacing:2px;
   text-transform:uppercase; padding:6px 11px;
   border-radius:2px; z-index:5;
 }
 .hero-tag {
-  position:absolute; bottom:22px; left:16px;
+  position:absolute; bottom:22px; left:22px;
   display:flex; align-items:center; gap:7px;
   background:rgba(255,255,255,.95); backdrop-filter:blur(8px);
   border:1px solid var(--border); border-radius:99px;
-  padding:6px 13px 6px 9px;
+  padding:6px 14px 6px 10px;
   font-size:.58rem; font-weight:600; color:var(--ink2); z-index:5;
 }
 .hero-tag-dot {
@@ -316,6 +275,27 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 @keyframes tagPulse {
   0%,100% { box-shadow:0 0 0 0 rgba(184,149,110,.5) }
   50%      { box-shadow:0 0 0 5px rgba(184,149,110,0) }
+}
+
+/* ── Droite : texte (45%) ─────────────────────── */
+.hero-left {
+  order:2;
+  background:var(--cream);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:64px 52px 0 52px;
+  gap:20px;
+  position:relative;
+  z-index:2;
+}
+.hero-deco-num {
+  position:absolute;
+  bottom:-20px; right:-10px;
+  font-family:var(--serif);
+  font-size:18rem; font-weight:300; font-style:italic;
+  color:rgba(196,168,130,.04);
+  user-select:none; pointer-events:none; line-height:1;
 }
 
 /* Eyebrow */
@@ -602,13 +582,12 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   .hero-wrapper { height:auto }
   .hero {
     grid-template-columns:1fr;
-    grid-template-rows:320px auto;
+    grid-template-rows:340px auto;
     height:auto;
   }
-  .hero-img-right { order:1; height:320px }
+  .hero-img-right { order:1; height:340px }
+  .hero-img-right::after { display:none }
   .hero-left { order:2; padding:40px 24px 48px; justify-content:flex-start }
-  .hero-left::after { display:none }
-  .hero-deco-num { display:none }
   .about-grid { grid-template-columns:1fr }
   .about-photo { min-height:240px }
   .works-feat { grid-template-columns:1fr }
