@@ -32,7 +32,16 @@
 <div class="hero-wrapper">
 <section class="hero">
 
-  <!-- Gauche : texte -->
+  <!-- Gauche : image portfolio.png (1/3) -->
+  <div class="hero-img-left" data-a="4">
+    <img src="assets/portfolio.png" alt="Elisa Huart-Vasak — Portfolio">
+    <div class="hero-badge">Portfolio 2025</div>
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>En recherche d&rsquo;alternance
+    </div>
+  </div>
+
+  <!-- Droite : texte (2/3) -->
   <div class="hero-left">
     <div class="hero-deco-num">E</div>
 
@@ -90,15 +99,6 @@
     </div>
 
     <div class="hero-scroll"><span class="hero-scroll-bar"></span>Scroll</div>
-  </div>
-
-  <!-- Droite : photo -->
-  <div class="hero-right" data-a="4">
-    <img src="assets/photo1.png" alt="Elisa Huart-Vasak" class="hero-photo">
-    <div class="hero-badge">Portfolio 2025</div>
-    <div class="hero-tag">
-      <span class="hero-tag-dot"></span>En recherche d&rsquo;alternance
-    </div>
   </div>
 
 </section>
@@ -199,7 +199,7 @@
       <div>
         <p class="contact-quote">&laquo;&nbsp;En recherche d&rsquo;un poste de cheffe de projet digital en apprentissage à partir de septembre 2026. Rythme&nbsp;: 3 semaines entreprise / 1 semaine formation.&nbsp;&raquo;</p>
         <div class="contact-links">
-          <a href="/cdn-cgi/l/email-protection#553d20342721233426343e153238343c397b363a38" class="contact-link"><i class="fa-regular fa-envelope"></i> <span class="__cf_email__" data-cfemail="c1a9b4a0b3b5b7a0b2a0aa81a6aca0a8adefa2aeac">[email&#160;protected]</span></a>
+          <a href="mailto:elisa.huartvasak@gmail.com" class="contact-link"><i class="fa-regular fa-envelope"></i> elisa.huartvasak@gmail.com</a>
           <a href="tel:+33783854578" class="contact-link"><i class="fa-solid fa-phone"></i> +33 7 83 85 45 78</a>
           <a href="https://linkedin.com/in/elisa-huart-vasak" target="_blank" class="contact-link"><i class="fa-brands fa-linkedin"></i> Elisa Huart-Vasak</a>
           <span class="contact-link"><i class="fa-solid fa-location-dot"></i> 75011 Paris</span>
@@ -218,6 +218,7 @@
     </div>
   </div>
 </section>
+
 <footer class="footer">
   <div class="container footer-inner">
     <span class="footer-brand">Elisa Huart-Vasak</span>
@@ -228,6 +229,55 @@
       <a href="creation.html">Écriture</a>
       <a href="devoirs.html">Travaux</a>
     </nav>
-    <span class="footer-copy">&copy; 2025 &mdash;
+    <span class="footer-copy">&copy; 2025 &mdash; Elisa Huart-Vasak</span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+  // read progress
+  const doc = document.documentElement;
+  const progress = (window.scrollY / (doc.scrollHeight - doc.clientHeight)) * 100;
+  document.getElementById('read-progress').style.width = progress + '%';
+});
+
+// Reveal on scroll
+const revealEls = document.querySelectorAll('[data-r],[data-stagger]');
+revealEls.forEach(el => el.classList.add('will-animate'));
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => io.observe(el));
+
+// Skill bars
+const skillIo = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.skill-fill').forEach(f => f.classList.add('animated'));
+      skillIo.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skills-bars').forEach(el => skillIo.observe(el));
+
+// Form
+function handleForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('form-btn');
+  const msg = document.getElementById('form-msg');
+  btn.textContent = 'Envoyé ✓';
+  btn.disabled = true;
+  msg.style.display = 'block';
+  msg.textContent = 'Message envoyé avec succès !';
+}
+
+// Burger menu (mobile)
+document.getElementById('burger').addEventListener('click', () => {
+  document.querySelector('.nav-links').classList.toggle('open');
+});
+</script>
 </body>
 </html>
