@@ -32,16 +32,7 @@
 <div class="hero-wrapper">
 <section class="hero">
 
-  <!-- Gauche : image portfolio.png (1/3) -->
-  <div class="hero-img-left" data-a="4">
-    <img src="assets/portfolio.png" alt="Elisa Huart-Vasak — Portfolio">
-    <div class="hero-badge">Portfolio 2025</div>
-    <div class="hero-tag">
-      <span class="hero-tag-dot"></span>En recherche d&rsquo;alternance
-    </div>
-  </div>
-
-  <!-- Droite : texte (2/3) -->
+  <!-- Gauche : texte (2/3) -->
   <div class="hero-left">
     <div class="hero-deco-num">E</div>
 
@@ -99,6 +90,15 @@
     </div>
 
     <div class="hero-scroll"><span class="hero-scroll-bar"></span>Scroll</div>
+  </div>
+
+  <!-- Droite : image portfolio.png (1/3) -->
+  <div class="hero-img-right" data-a="4">
+    <img src="assets/portfolio.png" alt="Elisa Huart-Vasak — Portfolio">
+    <div class="hero-badge">Portfolio 2025</div>
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>En recherche d&rsquo;alternance
+    </div>
   </div>
 
 </section>
@@ -199,7 +199,7 @@
       <div>
         <p class="contact-quote">&laquo;&nbsp;En recherche d&rsquo;un poste de cheffe de projet digital en apprentissage à partir de septembre 2026. Rythme&nbsp;: 3 semaines entreprise / 1 semaine formation.&nbsp;&raquo;</p>
         <div class="contact-links">
-          <a href="mailto:elisa.huartvasak@gmail.com" class="contact-link"><i class="fa-regular fa-envelope"></i> elisa.huartvasak@gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#7c1910150f1d5214091d0e080a1d0f1d173c1b111d1510521f1311" class="contact-link"><i class="fa-regular fa-envelope"></i> <span class="__cf_email__" data-cfemail="e7828b8e9486c98f92869593918694868ca7808a868e8bc984888a">[email&#160;protected]</span></a>
           <a href="tel:+33783854578" class="contact-link"><i class="fa-solid fa-phone"></i> +33 7 83 85 45 78</a>
           <a href="https://linkedin.com/in/elisa-huart-vasak" target="_blank" class="contact-link"><i class="fa-brands fa-linkedin"></i> Elisa Huart-Vasak</a>
           <span class="contact-link"><i class="fa-solid fa-location-dot"></i> 75011 Paris</span>
@@ -233,7 +233,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Nav scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
@@ -270,14 +270,4 @@ function handleForm(e) {
   const msg = document.getElementById('form-msg');
   btn.textContent = 'Envoyé ✓';
   btn.disabled = true;
-  msg.style.display = 'block';
-  msg.textContent = 'Message envoyé avec succès !';
-}
-
-// Burger menu (mobile)
-document.getElementById('burger').addEventListener('click', () => {
-  document.querySelector('.nav-links').classList.toggle('open');
-});
-</script>
-</body>
-</html>
+  msg.style.displa
