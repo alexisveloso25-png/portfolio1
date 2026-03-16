@@ -217,8 +217,8 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 .hero {
   height:100%;
   display:grid;
-  /* image 75% | texte 25% */
-  grid-template-columns:75fr 25fr;
+  /* image 65% | texte 35% */
+  grid-template-columns:65fr 35fr;
   grid-template-rows:1fr;
 }
 
@@ -284,8 +284,8 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:64px 28px 0 28px;
-  gap:16px;
+  padding:64px 40px 0 40px;
+  gap:18px;
   position:relative;
   z-index:2;
 }
@@ -313,7 +313,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none }
 /* Nom — plus grand, plus d'impact */
 .hero-name {
   font-family:var(--serif);
-  font-size:clamp(3.8rem,6.5vw,7.2rem);
+  font-size:clamp(2.4rem,3.8vw,4.8rem);
   font-weight:300; line-height:.85;
   letter-spacing:-.8px; color:var(--ink); margin:0;
 }
